@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   ShieldCheck, 
@@ -289,7 +289,7 @@ const Login = ({ onLogin }: { onLogin: (email: string) => void }) => {
         className="space-y-4"
       >
         <div className="text-center">
-          <div className="w-[416px] h-[166px] flex items-center justify-center mx-auto">
+          <div className="w-[437px] h-[175px] flex items-center justify-center mx-auto">
             <img 
               src="https://res.cloudinary.com/dbwe8j1uq/image/upload/v1775417666/Gemini_Generated_Image_ta0mvnta0mvnta0m-removebg-preview_mqyzbt.png" 
               alt="Logo" 
@@ -526,7 +526,16 @@ const CRISIS_DATA = [
   }
 ];
 
-const SITUATIONS_DATA = [
+const AUDIOS_DATA = [
+  { id: 'agir-sem-gritar', title: 'Como agir sem gritar', file: 'COMO AGIR SEM GRITAR.mp3' },
+  { id: 'quando-ele-grita', title: 'O que fazer quando ele grita', file: 'O QUE FAZER QUANDO ELE GRITA.mp3' },
+  { id: 'quando-se-joga-chao', title: 'O que fazer quando se joga no chão', file: 'O QUE FAZER QUANDO ELE SE JOGA NO CHÃO.mp3' },
+  { id: 'no-mercado', title: 'Como agir no mercado', file: 'COMO AGIR NO MERCADO.mp3' },
+  { id: 'no-limite', title: 'Quando você está no limite', file: 'QUANDO VOCÊ ESTÁ NO LIMITE.mp3' },
+  { id: 'manter-firmeza', title: 'Como manter firmeza sem ceder', file: 'COMO MANTER FIRMEZA SEM CEDER.mp3' },
+];
+
+const SITUATIONS_DATA = [ 
   { 
     id: 'mercado', 
     label: 'Mercado', 
@@ -590,6 +599,8 @@ export default function App() {
   const [selectedSituation, setSelectedSituation] = useState<typeof SITUATIONS_DATA[0] | null>(null);
   const [quizAnswers, setQuizAnswers] = useState<QuizAnswers | null>(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [playingAudio, setPlayingAudio] = useState<string | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
     const session = localStorage.getItem('anti_birra_session');
@@ -623,6 +634,24 @@ export default function App() {
     setIsLoggedIn(false);
     localStorage.removeItem('anti_birra_session');
     setCurrentPage('login');
+  };
+
+  const playAudio = (audioFile: string) => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+    }
+    audioRef.current = new Audio(`/${audioFile}`);
+    audioRef.current.play();
+    setPlayingAudio(audioFile);
+    audioRef.current.onended = () => setPlayingAudio(null);
+  };
+
+  const stopAudio = () => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current = null;
+    }
+    setPlayingAudio(null);
   };
 
   const handleTabChange = (tab: TabId) => {
@@ -808,20 +837,17 @@ export default function App() {
         return (
           <GenericPage title="Áudios Guiados" icon={Music} onBack={() => setCurrentPage('home')}>
             <div className="space-y-4">
-              {[
-                'Como agir sem gritar',
-                'O que fazer quando ele grita',
-                'O que fazer quando se joga no chão',
-                'Como agir no mercado',
-                'Quando você está no limite',
-                'Como manter firmeza sem ceder'
-              ].map(audio => (
-                <Card key={audio} className="flex items-center gap-4">
+              {AUDIOS_DATA.map(audio => (
+                <Card key={audio.id} onClick={() => playingAudio === audio.file ? stopAudio() : playAudio(audio.file)} className="flex items-center gap-4 cursor-pointer">
                   <div className="bg-purple-500/20 p-3 rounded-full">
-                    <Play size={20} className="text-purple-500 fill-purple-500" />
+                    {playingAudio === audio.file ? (
+                      <Volume2 size={20} className="text-purple-500 animate-pulse" />
+                    ) : (
+                      <Play size={20} className="text-purple-500 fill-purple-500" />
+                    )}
                   </div>
-                  <span className="font-medium text-sm flex-1">{audio}</span>
-                  <span className="text-[10px] text-text-muted">3:45</span>
+                  <span className="font-medium text-sm flex-1">{audio.title}</span>
+                  <span className="text-[10px] text-text-muted">{playingAudio === audio.file ? 'Tocando...' : '▶'}</span>
                 </Card>
               ))}
             </div>
