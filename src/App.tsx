@@ -468,6 +468,35 @@ const Home = ({ setPage, quizAnswers, onLogout }: { setPage: (p: PageId) => void
         </div>
         <ChevronRight className="ml-auto text-text-muted" size={18} />
       </Card>
+
+      {/* Videos Section */}
+      <div className="space-y-3">
+        <h4 className="text-[10px] font-bold uppercase tracking-widest text-text-muted">Conteúdo complementar</h4>
+        
+        <div className="p-4 bg-card rounded-xl border border-white/5">
+          <p className="text-[9px] text-text-muted mb-3">Entenda melhor o que está por trás das birras e como agir sem piorar a situação.</p>
+          <div className="relative w-full h-[180px] rounded-lg overflow-hidden mb-3">
+            <iframe
+              className="absolute top-0 left-0 w-full h-full"
+              src="https://www.youtube.com/embed/4OFRAiE-FW4?rel=0&playsinline=1"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        </div>
+
+        <div className="p-4 bg-card rounded-xl border border-white/5">
+          <p className="text-[9px] text-text-muted mb-3">Quando nada parece funcionar, o problema geralmente não é falta de esforço.</p>
+          <div className="relative w-full h-[180px] rounded-lg overflow-hidden">
+            <iframe
+              className="absolute top-0 left-0 w-full h-full"
+              src="https://www.youtube.com/embed/_yMtYNK7OuY?rel=0&playsinline=1"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
