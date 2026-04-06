@@ -492,37 +492,51 @@ const CRISIS_DATA = [
     id: 'gritando', 
     label: 'Ele está gritando', 
     icon: MessageSquare,
-    meaning: 'Ele está sobrecarregado emocionalmente e não consegue se expressar de outra forma.',
-    todo: ['Mantenha seu tom de voz baixo', 'Fique na altura dele', 'Valide o sentimento: "Eu vejo que você está bravo"'],
-    avoid: ['Gritar de volta', 'Tentar dar lição de moral na hora da crise', 'Ceder ao que ele quer para ele parar'],
-    phrase: 'Eu entendo que você está bravo, mas não posso te ouvir enquanto você grita. Vou esperar você se acalmar.'
+    meaning: 'Quando a criança começa a gritar, normalmente a situação já saiu do ponto da explicação.',
+    todo: ['Fale pouco', 'Mantenha a voz firme e baixa', 'Não tente convencer no meio da crise', 'Mantenha o limite com clareza'],
+    avoid: ['Gritar de volta', 'Explicar demais', 'Ameaçar', 'Mudar a decisão só para o grito parar'],
+    phrase: 'Eu entendi que você ficou bravo, mas eu não vou mudar isso agora.',
+    video: null
   },
   { 
     id: 'chao', 
     label: 'Ele se jogou no chão', 
     icon: Hand,
-    meaning: 'Uma perda total de controle motor e emocional. Ele precisa de um limite seguro.',
-    todo: ['Garanta que ele não se machuque', 'Fique por perto em silêncio', 'Espere a "onda" passar'],
-    avoid: ['Tentar levantar ele à força', 'Ameaçar ir embora e deixar ele lá', 'Sentir vergonha (se for em público)'],
-    phrase: 'Estou aqui com você. Quando você estiver pronto para levantar, nós conversamos.'
+    meaning: 'Quando a crise chega nesse nível, o mais importante é não transformar a cena em discussão.',
+    todo: ['Garanta segurança', 'Fale pouco', 'Mantenha o limite', 'Espere a intensidade baixar antes de explicar'],
+    avoid: ['Negociar na hora', 'Ameaçar', 'Voltar atrás para encerrar a cena rápido'],
+    phrase: 'Eu sei que você ficou bravo, mas a resposta continua a mesma.',
+    video: 'avLfgKBPf8o'
   },
   { 
     id: 'enfrentando', 
     label: 'Ele está me enfrentando', 
     icon: ShieldCheck,
-    meaning: 'Um teste de limites e busca por autonomia. Ele quer saber quem está no comando.',
-    todo: ['Mantenha a firmeza no olhar', 'Dê escolhas limitadas', 'Seja consistente com a regra'],
-    avoid: ['Entrar em uma disputa de poder', 'Mudar a regra porque ele desafiou', 'Levar para o lado pessoal'],
-    phrase: 'Eu te ouvi. Agora, a regra é esta e não vamos mudar.'
+    meaning: 'Quando a criança enfrenta, a tendência do adulto é endurecer no impulso ou entrar em disputa.',
+    todo: ['Mantenha postura firme', 'Não entre em debate longo', 'Fale de forma curta', 'Sustente o limite'],
+    avoid: ['Ironia', 'Humilhação', 'Repetir sem direção', 'Transformar em confronto verbal'],
+    phrase: 'Você pode não gostar, mas eu continuo sendo clara no que estou dizendo.',
+    video: 'avLfgKBPf8o'
   },
   { 
-    id: 'paciencia', 
-    label: 'Estou perdendo a paciência', 
+    id: 'nada-funciona', 
+    label: 'Nada do que eu faço funciona', 
+    icon: AlertTriangle,
+    meaning: 'Quando nada parece funcionar, geralmente o problema não é falta de esforço. É falta de uma resposta mais clara para aquele momento.',
+    todo: ['Simplifique sua resposta', 'Fale menos', 'Mantenha uma única direção', 'Foque em não escalar mais a crise'],
+    avoid: ['Testar várias coisas ao mesmo tempo', 'Mudar de estratégia a cada minuto', 'Agir no desespero'],
+    phrase: 'Eu vou continuar com calma, mas não vou mudar isso agora.',
+    video: '_yMtYNK7OuY'
+  },
+  { 
+    id: 'explodir', 
+    label: 'Eu estou quase explodindo', 
     icon: Brain,
-    meaning: 'Seu limite foi atingido. Você precisa se autorregular antes de agir.',
-    todo: ['Afaste-se por 1 minuto se for seguro', 'Respire fundo 3 vezes', 'Lembre-se: ele é a criança, você é o adulto'],
-    avoid: ['Explodir e depois se culpar', 'Agir por impulso', 'Tentar resolver o problema agora'],
-    phrase: 'A mamãe está ficando brava e precisa de um minuto para se acalmar. Já volto.'
+    meaning: 'Quando você chega nesse ponto, a crise já atingiu também o seu limite emocional.',
+    todo: ['Pare por dois segundos', 'Respire', 'Fale o mínimo necessário', 'Reduza a velocidade da sua resposta'],
+    avoid: ['Reagir no impulso', 'Continuar falando sem parar', 'Querer resolver tudo naquele segundo'],
+    phrase: 'Eu vou continuar, mas preciso falar com calma.',
+    video: null
   }
 ];
 
@@ -540,55 +554,61 @@ const SITUATIONS_DATA = [
     id: 'mercado', 
     label: 'Mercado', 
     icon: ListTodo,
-    meaning: 'Estímulo visual excessivo e desejo imediato por itens fora do planejado.',
-    todo: ['Combine as regras antes de entrar', 'Dê uma missão para ele (ajudar a pegar itens)', 'Use lista visual'],
-    avoid: ['Ir com a criança cansada ou com fome', 'Ceder ao "só hoje"', 'Discutir no corredor'],
-    phrase: 'Hoje nossa lista é esta. Podemos escolher uma fruta juntos.'
+    meaning: 'No mercado, a birra costuma crescer junto com a frustração e a pressão do ambiente.',
+    todo: ['Fale pouco', 'Mantenha a decisão', 'Não negocie no impulso', 'Priorize clareza e saída rápida se necessário'],
+    avoid: ['Ceder por vergonha', 'Discutir no meio do corredor', 'Explicar demais'],
+    phrase: 'Eu sei que você quer isso, mas hoje eu não vou levar.',
+    video: null
   },
   { 
     id: 'banho', 
     label: 'Banho', 
     icon: Sparkles,
-    meaning: 'Dificuldade em encerrar uma atividade prazerosa (brincar) para uma de transição.',
-    todo: ['Avisos de transição (5 min, 2 min)', 'Torne o banho divertido', 'Dê autonomia na escolha do brinquedo'],
-    avoid: ['Interromper a brincadeira bruscamente', 'Ameaçar que o chuveiro vai quebrar', 'Forçar a entrada'],
-    phrase: 'Em 2 minutos o tempo de brincar acaba e o tempo do banho começa.'
+    meaning: 'O banho gera resistência quando interrompe outra atividade ou acontece em momento de cansaço.',
+    todo: ['Avise antes', 'Use frases curtas', 'Mantenha a transição', 'Conduza com calma e firmeza'],
+    avoid: ['Transformar em discussão', 'Dar muitos tempos extras', 'Voltar atrás porque reclamou'],
+    phrase: 'Agora é hora do banho. Depois a gente continua.',
+    video: '4OFRAiE-FW4'
   },
   { 
     id: 'sair', 
     label: 'Hora de sair', 
     icon: Clock,
-    meaning: 'Ansiedade pela mudança de ambiente ou resistência a deixar o conforto de casa.',
-    todo: ['Prepare tudo com antecedência', 'Use cronômetro visual', 'Crie um ritual de saída'],
-    avoid: ['Sair com pressa extrema', 'Gritar "vamos logo"', 'Mentir sobre para onde vão'],
-    phrase: 'Quando o despertador tocar, é hora de calçar o sapato.'
+    meaning: 'Sair de casa ou encerrar uma atividade gera crise quando a criança tem dificuldade com mudança.',
+    todo: ['Avise com antecedência', 'Mostre o que vai acontecer', 'Mantenha a decisão', 'Reduza fala na hora da resistência'],
+    avoid: ['Avisar e não cumprir', 'Negociar muitas vezes', 'Mudar o combinado'],
+    phrase: 'Agora nós vamos sair. Eu sei que você não gostou, mas vamos mesmo assim.',
+    video: null
   },
   { 
     id: 'visitas', 
     label: 'Visitas', 
     icon: User,
-    meaning: 'Busca por atenção ou desconforto com a quebra da rotina familiar.',
-    todo: ['Explique quem vem e o que espera dele', 'Reserve um tempo de atenção exclusiva antes', 'Tenha um "kit de emergência" de atividades'],
-    avoid: ['Corrigir excessivamente na frente dos outros', 'Ignorar a criança totalmente', 'Exigir comportamento perfeito'],
-    phrase: 'Agora a mamãe vai conversar com a visita. Você pode brincar aqui do lado.'
+    meaning: 'Em visitas, a criança pode ficar mais estimulada e a mãe tende a se sentir mais pressionada.',
+    todo: ['Mantenha a mesma regra de casa', 'Fale pouco', 'Afaste da situação se necessário', 'Não ceda só para evitar julgamento'],
+    avoid: ['Relaxar todos os limites', 'Agir só pensando nos outros', 'Mudar a regra para acabar rápido'],
+    phrase: 'Você pode ficar bravo, mas eu não vou mudar isso agora.',
+    video: null
   },
   { 
     id: 'tela', 
     label: 'Tela', 
     icon: Zap,
-    meaning: 'Dificuldade neurológica em processar o fim do estímulo de dopamina.',
-    todo: ['Combine o tempo antes de ligar', 'Use avisos de "último desenho"', 'Ofereça uma atividade física depois'],
-    avoid: ['Desligar no meio do desenho', 'Usar a tela como moeda de troca constante', 'Deixar tempo ilimitado'],
-    phrase: 'Este é o último desenho. Quando acabar, vamos desligar juntos.'
+    meaning: 'A interrupção da tela gera crise porque a criança quer continuar e reage mal ao corte.',
+    todo: ['Avise antes do fim', 'Desligue quando chegar a hora', 'Mantenha a decisão', 'Redirecione para outra atividade'],
+    avoid: ['Desligar sem aviso toda vez', 'Voltar atrás depois da reclamação', 'Discutir demais'],
+    phrase: 'A tela acabou. Agora vamos para outra coisa.',
+    video: null
   },
   { 
     id: 'brinquedos', 
     label: 'Guardar brinquedos', 
     icon: Target,
-    meaning: 'Sensação de que a tarefa é grande demais ou fim da diversão.',
-    todo: ['Divida a tarefa (eu guardo os carros, você os blocos)', 'Transforme em jogo de velocidade', 'Elogie o esforço'],
-    avoid: ['Guardar tudo sozinha sempre', 'Ameaçar jogar tudo no lixo', 'Exigir organização impecável'],
-    phrase: 'Vamos ver quem guarda mais rápido? Eu pego os azuis!'
+    meaning: 'Guardar brinquedos é difícil porque encerra prazer e exige organização ao mesmo tempo.',
+    todo: ['Dê comando curto', 'Ajude no começo', 'Mantenha constância', 'Não transforme em briga longa'],
+    avoid: ['Pedir muitas vezes sem direção', 'Fazer tudo no lugar da criança', 'Desistir no meio'],
+    phrase: 'Agora é hora de guardar. Eu vou começar com você.',
+    video: '4OFRAiE-FW4'
   }
 ];
 
@@ -683,13 +703,16 @@ export default function App() {
         return (
           <GenericPage title="Agir Agora" icon={Zap} onBack={() => setCurrentPage('home')}>
             <div className="space-y-4">
-              <p className="text-sm text-text-muted px-1">Escolha a situação atual para orientação imediata:</p>
+              <div className="bg-red-500/10 p-4 rounded-xl border border-red-500/20">
+                <h3 className="font-bold text-sm mb-1">Seu filho está em crise agora?</h3>
+                <p className="text-[10px] text-text-muted">Veja como agir sem piorar a situação.</p>
+              </div>
               {CRISIS_DATA.map(item => (
                 <Card key={item.id} onClick={() => { setSelectedCrisis(item); setCurrentPage('crisis-detail'); }} className="flex items-center gap-4">
                   <div className="bg-red-500/10 p-3 rounded-xl">
                     <item.icon size={20} className="text-red-500" />
                   </div>
-                  <span className="font-bold">{item.label}</span>
+                  <span className="font-bold text-sm">{item.label}</span>
                   <ChevronRight className="ml-auto text-text-muted" />
                 </Card>
               ))}
@@ -746,6 +769,21 @@ export default function App() {
                 <Button onClick={() => setCurrentPage('audios')} variant="outline" className="py-3">
                   <Volume2 size={18} /> Ouvir áudio de apoio
                 </Button>
+
+                {selectedCrisis.video && (
+                  <div className="mt-4 p-4 bg-card rounded-xl border border-white/5">
+                    <p className="text-[10px] text-text-muted mb-2">🎥 Entenda melhor essa situação</p>
+                    <p className="text-[9px] text-text-muted mb-3">Quando a crise chega nesse nível, é comum sentir que tudo saiu do controle. Mas na maioria das vezes, isso não começa ali. É um processo que foi se acumulando antes.</p>
+                    <div className="relative w-full h-[180px] rounded-lg overflow-hidden">
+                      <iframe
+                        className="absolute top-0 left-0 w-full h-full"
+                        src={`https://www.youtube.com/embed/${selectedCrisis.video}?rel=0&playsinline=1`}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                    </div>
+                  </div>
+                )}
               </Card>
             </div>
           </GenericPage>
@@ -753,16 +791,22 @@ export default function App() {
       case 'situations':
         return (
           <GenericPage title="Situações do Dia" icon={MessageSquare} onBack={() => setCurrentPage('home')}>
-            <div className="grid gap-4">
-              {SITUATIONS_DATA.map(item => (
-                <Card key={item.id} onClick={() => { setSelectedSituation(item); setCurrentPage('situation-detail'); }} className="flex items-center gap-4">
-                  <div className="bg-blue-500/10 p-3 rounded-xl">
-                    <item.icon size={20} className="text-blue-500" />
-                  </div>
-                  <span className="font-bold">{item.label}</span>
-                  <ChevronRight className="ml-auto text-text-muted" />
-                </Card>
-              ))}
+            <div className="space-y-4">
+              <div className="bg-blue-500/10 p-4 rounded-xl border border-blue-500/20">
+                <h3 className="font-bold text-sm mb-1">Situações do dia a dia</h3>
+                <p className="text-[10px] text-text-muted">Veja como agir nas situações em que a crise mais costuma aparecer.</p>
+              </div>
+              <div className="grid gap-4">
+                {SITUATIONS_DATA.map(item => (
+                  <Card key={item.id} onClick={() => { setSelectedSituation(item); setCurrentPage('situation-detail'); }} className="flex items-center gap-4">
+                    <div className="bg-blue-500/10 p-3 rounded-xl">
+                      <item.icon size={20} className="text-blue-500" />
+                    </div>
+                    <span className="font-bold text-sm">{item.label}</span>
+                    <ChevronRight className="ml-auto text-text-muted" />
+                  </Card>
+                ))}
+              </div>
             </div>
           </GenericPage>
         );
@@ -806,6 +850,21 @@ export default function App() {
                 <Button onClick={() => setCurrentPage('audios')} variant="outline" className="py-3">
                   <Music size={18} /> Áudio Guiado
                 </Button>
+
+                {selectedSituation.video && (
+                  <div className="mt-4 p-4 bg-card rounded-xl border border-white/5">
+                    <p className="text-[10px] text-text-muted mb-2">🎥 Entenda melhor essa situação</p>
+                    <p className="text-[9px] text-text-muted mb-3">Muitas vezes, a birra não é só teimosia. Ela é uma forma da criança expressar algo que ainda não sabe explicar.</p>
+                    <div className="relative w-full h-[180px] rounded-lg overflow-hidden">
+                      <iframe
+                        className="absolute top-0 left-0 w-full h-full"
+                        src={`https://www.youtube.com/embed/${selectedSituation.video}?rel=0&playsinline=1`}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                    </div>
+                  </div>
+                )}
               </Card>
             </div>
           </GenericPage>
