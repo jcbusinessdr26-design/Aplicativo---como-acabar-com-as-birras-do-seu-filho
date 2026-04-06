@@ -859,56 +859,50 @@ export default function App() {
             <div className="space-y-4">
               {[
                 { 
-                  name: 'Treino do "não" firme', 
-                  when: 'Quando a criança quer pegar algo, insistir em alguma ação proibida ou continuar algo que precisa parar.', 
-                  objetivo: 'Ensinar que alguns limites continuam valendo, mesmo quando há reclamação, choro ou insistência.',
-                  aplicar: '1. Vá até a criança rapidamente.\n2. Fale uma frase curta e clara.\n3. Se necessário, retire o objeto ou afaste.\n4. Redirecione para outra ação.\n5. Mantenha a mesma resposta.',
-                  evitar: 'Explicação longa, repetir muitas frases, dizer não sem agir, ameaçar, mudar o limite por cansaço.',
-                  esperar: 'A criança pode voltar a tentar várias vezes. O resultado vem da repetição consistente.'
+                  name: 'TREINO DO "NÃO"', 
+                  when: 'Quando a criança quer algo que você não vai deixar.', 
+                  fazer: 'Diga "não" de forma calma e curta. Não explique demais. Se ela insistir, repita a mesma resposta. Se precisar, tire o objeto ou afaste a criança. Mostre outra opção logo em seguida.',
+                  frase: '“Agora não.” / “Esse não. Esse sim.”',
+                  esperar: 'No começo, ela pode insistentir. Com repetição, ela entende melhor o limite.'
                 },
                 { 
-                  name: 'Parar sem birra', 
-                  when: 'Quando precisa parar uma atividade, sair de um lugar, encerrar uma brincadeira, desligar a tela ou mudar de ambiente.', 
-                  objetivo: 'Ajudar a criança a lidar melhor com transições e mudanças de atividade.',
-                  aplicar: '1. Avise pouco antes.\n2. Mostre com ação o que vai acontecer.\n3. Mantenha a mudança.\n4. Se houver choro, acolha sem voltar atrás.\n5. Redirecione para a próxima etapa.',
-                  evitar: 'Avisar e não cumprir, voltar atrás porque a criança chorou, negociar demais, transformar em discussão.',
-                  esperar: 'As transições podem continuar difíceis no início. Com repetição, a resistência tende a diminuir.'
+                  name: 'PARAR SEM CONFUSÃO', 
+                  when: 'Quando precisa parar uma brincadeira, sair de um lugar ou desligar algo.', 
+                  fazer: 'Avise pouco antes. Use uma frase simples. Quando chegar a hora, mantenha o combinado. Não volte atrás só porque ela reclamou. Leve para a próxima atividade.',
+                  frase: '“Já vai acaba.” / “Agora guardar.”',
+                  esperar: 'A mudança pode ser difícil no início. Com o tempo, a criança tende a aceitar melhor.'
                 },
                 { 
-                  name: 'Resposta sem grito', 
-                  when: 'Quando você perceber que está irritada, cansada ou prestes a reagir no impulso.', 
-                  objetivo: 'Evitar que a sua explosão aumente ainda mais a tensão da situação.',
-                  aplicar: '1. Pare por dois segundos.\n2. Respire fundo uma vez.\n3. Use poucas palavras.\n4. Fale com voz firme e baixa.\n5. Se necessário, conduza a criança para longe.',
-                  evitar: 'Gritar para conseguir obediência, discursos longos, confrontar por muito tempo, responder no impulso.',
-                  esperar: 'O objetivo não é resolver tudo na hora. É conduzir com mais controle e menos desgaste.'
+                  name: 'RESPONDER SEM GRITAR', 
+                  when: 'Quando você sentir que está ficando nervosa.', 
+                  fazer: 'Pare por dois segundos. Respire fundo. Fale baixo e firme. Use poucas palavras. Se precisar, tire a criança da situação.',
+                  frase: '“Agora chega.” / “Vamos sair daqui.”',
+                  esperar: 'Você não precisa resolver tudo na hora. O objetivo é não piorar a situação.'
                 },
                 { 
-                  name: 'Reduzir insistência', 
-                  when: 'Quando a criança pede ou tenta a mesma coisa repetidamente e insiste após um limite.', 
-                  objetivo: 'Reduzir o ciclo de repetição sem entrar em desgaste constante.',
-                  aplicar: '1. Dê uma resposta curta e clara.\n2. Se continuar, repita a mesma frase.\n3. Aja junto com a fala.\n4. Redirecione para outra atividade.\n5. Mantenha o mesmo padrão.',
-                  evitar: 'Respostas diferentes, explicações longas, mudar a decisão por cansaço, responder com irritação.',
-                  esperar: 'A insistência pode continuar por um tempo. A mudança vem quando a resposta fica mais previsível.'
+                  name: 'DIMINUIR A INSISTÊNCIA', 
+                  when: 'Quando a criança pede a mesma coisa muitas vezes.', 
+                  fazer: 'Responda uma vez com clareza. Se ela repetir, fale a mesma coisa. Não abra nova conversa toda hora. Não mude a resposta por cansaço. Redirecione para outra coisa.',
+                  frase: '“Eu já respondi.” / “A resposta continua a mesma.”',
+                  esperar: 'Ela pode insistentir por um tempo. Se sua resposta ficar igual, isso tende a diminuir.'
                 },
                 { 
-                  name: 'Rotina de limite', 
-                  when: 'No dia a dia, para criar previsibilidade e reduzir confusão em momentos repetidos.', 
-                  objetivo: 'Criar um ambiente mais claro, previsível e organizado para a criança.',
-                  aplicar: '1. Escolha poucos limites importantes.\n2. Use sempre palavras parecidas.\n3. Mantenha reações parecidas ao longo dos dias.\n4. Mostre com ações o que vem depois.\n5. Repita a rotina em momentos semelhantes.',
-                  evitar: 'Muitas regras ao mesmo tempo, frases longas, ameaças, falta de constância, mudar conforme o humor.',
-                  esperar: 'A criança ainda pode testar. O ganho está em criar mais previsibilidade e clareza no dia dia.'
+                  name: 'LIMITES DO DIA A DIA', 
+                  when: 'Para deixar a rotina mais clara dentro de casa.', 
+                  fazer: 'Escolha poucos limites importantes. Use sempre palavras parecidas. Reaja do mesmo jeito nas mesmas situações. Mostre o que vem depois. Repita isso todos os dias.',
+                  frase: '“Bater não.” / “Agora guardar.” / “Aqui não pode.”',
+                  esperar: 'A criança ainda vai testar. Mas com repetição ela entende melhor o que é esperado.'
                 }
               ].map(ex => (
                 <Card key={ex.name} className="space-y-3">
                   <div className="flex justify-between items-center">
-                    <h4 className="font-bold text-primary">{ex.name}</h4>
+                    <h4 className="font-bold text-primary text-sm">{ex.name}</h4>
                     <Music size={16} className="text-text-muted" />
                   </div>
                   <div className="text-xs space-y-1">
                     <p><span className="text-text-muted">Quando usar:</span> {ex.when}</p>
-                    <p><span className="text-text-muted">Objetivo:</span> {ex.objetivo}</p>
-                    <p><span className="text-text-muted">Como aplicar:</span> {ex.aplicar}</p>
-                    <p><span className="text-text-muted">O que evitar:</span> {ex.evitar}</p>
+                    <p><span className="text-text-muted">O que fazer:</span> {ex.fazer}</p>
+                    <p><span className="text-text-muted">Exemplos:</span> {ex.frase}</p>
                     <p><span className="text-text-muted font-bold">O que esperar:</span> {ex.esperar}</p>
                   </div>
                 </Card>
