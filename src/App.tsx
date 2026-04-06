@@ -162,6 +162,14 @@ const Background = () => (
     <div className="absolute top-1/2 right-1/4 opacity-5">
       <CheckSquare size={100} />
     </div>
+    <div className="absolute top-[180px] left-1/2 -translate-x-1/2 w-[200px]">
+      <img 
+        src="https://res.cloudinary.com/dbwe8j1uq/image/upload/v1775495277/ChatGPT_Image_6_de_abr._de_2026_13_54_37_km51kx.webp" 
+        alt="" 
+        className="w-full h-auto object-contain"
+        referrerPolicy="no-referrer"
+      />
+    </div>
   </div>
 );
 
