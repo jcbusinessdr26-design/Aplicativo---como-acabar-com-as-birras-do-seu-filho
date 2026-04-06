@@ -921,38 +921,90 @@ export default function App() {
           <GenericPage title="Plano de 7 Dias" icon={Calendar} onBack={() => setCurrentPage('home')}>
             <div className="space-y-6">
               <Card className="bg-primary/10 border-primary/20">
-                <div className="flex justify-between items-center mb-4">
-                  <span className="font-bold">Progresso Semanal</span>
-                  <span className="text-xs text-primary">Dia 2 de 7</span>
-                </div>
-                <div className="h-2 bg-background rounded-full overflow-hidden">
-                  <div className="h-full bg-primary w-[28%]" />
-                </div>
+                <h3 className="font-bold text-sm mb-1">Plano de 7 Dias para Reduzir Birras</h3>
+                <p className="text-[10px] text-text-muted">Siga um passo por dia para agir com mais firmeza e menos estresse.</p>
               </Card>
               
-              <div className="space-y-3">
+              <div className="space-y-4">
                 {[
-                  { day: 1, focus: 'Observação', action: 'Anote o que gatilha as birras.' },
-                  { day: 2, focus: 'Firmeza', action: 'Mantenha um limite inegociável.' },
-                  { day: 3, focus: 'Calma', action: 'Treine a respiração antes de agir.' },
-                  { day: 4, focus: 'Consistência', action: 'Repita a mesma resposta sempre.' },
-                  { day: 5, focus: 'Conexão', action: 'Tempo de qualidade após o limite.' },
-                  { day: 6, focus: 'Frases', action: 'Use apenas as frases do guia.' },
-                  { day: 7, focus: 'Revisão', action: 'Veja o que mudou na sua casa.' }
+                  { 
+                    day: 1, 
+                    title: 'OBSERVAR ANTES DE REAGIR', 
+                    objetivo: 'Perceber o que mais costuma desencadear a birra.',
+                    fazer: 'Durante o dia, observe em quais momentos a birra aparece. Preste atenção se acontece: quando escuta "não", quando precisa parar algo, quando quer algo e não consegue, quando está cansada ou com fome.',
+                    evitar: 'Reagir sem perceber o que veio antes, tratar todas as birras igual, ignorar o gatilho.',
+                    checklist: ['Observei pelo menos 1 gatilho real', 'Percebi em que situação mais apareceu', 'Notei como eu costumo reagir']
+                  },
+                  { 
+                    day: 2, 
+                    title: 'ESCOLHER 1 LIMITE', 
+                    objetivo: 'Começar a reduzir a confusão sobre o que pode e o que não pode.',
+                    fazer: 'Escolha apenas 1 limite importante para manter com mais firmeza hoje. Exemplos: não bater, não jogar objetos, desligar a tela quando pedido. Diga de forma curta e mantenha a mesma resposta.',
+                    evitar: 'Querer corrigir tudo no mesmo dia, mudar de ideia no meio da crise, dar muitas explicações.',
+                    checklist: ['Escolhi 1 limite claro', 'Mantenha a mesma resposta', 'Evitei discutir demais']
+                  },
+                  { 
+                    day: 3, 
+                    title: 'FALAR MENOS, AGIR MAIS', 
+                    objetivo: 'Parar de aumentar a tensão falando demais.',
+                    fazer: 'Use frases curtas e diretas: "Agora não.", "Isso não pode.", "A resposta continua a mesma." Fale pouco, mantenha tom firme, use ação junto se necessário.',
+                    evitar: 'Discursos longos, bronca sem direção, ameaças, repetir frases diferentes.',
+                    checklist: ['Usei frases mais curtas', 'Evitei explicar demais', 'Manti tom firme']
+                  },
+                  { 
+                    day: 4, 
+                    title: 'NÃO REFORÇAR INSISTÊNCIA', 
+                    objetivo: 'Quebrar o ciclo de repetir, negociar ou ceder no desgaste.',
+                    fazer: 'Perceba se a criança insiste até conseguir. Responda uma vez com clareza, repita a mesma resposta se necessário, não abra nova negociação a cada insistência.',
+                    evitar: 'Ceder para acabar logo, mudar resposta porque chorou, transformar em discussão.',
+                    checklist: ['Identifiquei momentos de insistência', 'Evitei negociar no impulso', 'Mantenha a resposta']
+                  },
+                  { 
+                    day: 5, 
+                    title: 'MELHORAR TRANSIÇÕES', 
+                    objetivo: 'Reduzir birras em momentos de mudança.',
+                    fazer: 'Escolha 1 transição difícil (parar de brincar, desligar TV, ir para banho). Avise antes, use frases simples, mantenha a mudança quando chegar a hora.',
+                    evitar: 'Avisar e não cumprir, dar muitos "só mais um pouco", transformar em briga.',
+                    checklist: ['Escolhi 1 transição específica', 'Avisei antes', 'Mantenha a decisão']
+                  },
+                  { 
+                    day: 6, 
+                    title: 'CORRIGIR SEM GRITAR', 
+                    objetivo: 'Reduzir sua própria escalada emocional.',
+                    fazer: 'Quando sentir que vai perder a paciência: pare 2 segundos, respire fundo, use 1 frase curta. Frases: "Eu vou continuar, mas com calma.", "Não vou mudar isso agora."',
+                    evitar: 'Reagir no impulso, gritar para encerrar, ironizar, discutir no auge.',
+                    checklist: ['Percebi quando estava no limite', 'Respirei antes de reagir', 'Evitei gritar']
+                  },
+                  { 
+                    day: 7, 
+                    title: 'REVISÃO E PRÓXIMO PASSO', 
+                    objetivo: 'Ver o que funcionou e o que precisa de atenção.',
+                    fazer: 'Revise: qual gatilho mais aparece? Qual situação mais desgasta? Em qual momento você conseguiu agir melhor? O objetivo é perceber progresso, não perfeição.',
+                   避免: 'Esperar perfeição em 7 dias, abandonar tudo, avaliar só pelo pior momento.',
+                    checklist: ['Entendi melhor os gatilhos', 'Percebi padrões da minha reação', 'Sei qual será meu próximo foco']
+                  }
                 ].map(item => (
-                  <Card key={item.day} className={cn("flex items-center gap-4", item.day > 2 && "opacity-50")}>
-                    <div className={cn("w-10 h-10 rounded-full flex items-center justify-center font-bold shrink-0", item.day <= 2 ? "bg-primary text-white" : "bg-background text-text-muted")}>
-                      {item.day}
+                  <Card key={item.day} className={cn("space-y-3", item.day > 2 && "opacity-50")}>
+                    <div className="flex items-center gap-3">
+                      <div className={cn("w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs shrink-0", item.day <= 2 ? "bg-primary text-white" : "bg-background text-text-muted")}>
+                        {item.day}
+                      </div>
+                      <h4 className="font-bold text-xs">{item.title}</h4>
                     </div>
-                    <div className="flex-1">
-                      <h4 className="font-bold text-sm">Dia {item.day}: {item.focus}</h4>
-                      <p className="text-[10px] text-text-muted">{item.action}</p>
+                    <div className="text-[10px] space-y-1">
+                      <p><span className="text-text-muted">Objetivo:</span> {item.objetivo}</p>
+                      <p><span className="text-text-muted">O que fazer:</span> {item.fazer}</p>
+                      <p><span className="text-text-muted">O que evitar:</span> {item.evitar}</p>
+                      <div className="mt-2 pt-2 border-t border-white/5">
+                        <p className="text-text-muted mb-1">Checklist:</p>
+                        {item.checklist.map((check, i) => (
+                          <p key={i} className="text-[9px]">• {check}</p>
+                        ))}
+                      </div>
                     </div>
-                    {item.day <= 2 && <CheckCircle2 size={18} className="text-green-500" />}
                   </Card>
                 ))}
               </div>
-              <Button onClick={() => setCurrentPage('checklist')} variant="outline">Ver Checklist de Revisão</Button>
             </div>
           </GenericPage>
         );
