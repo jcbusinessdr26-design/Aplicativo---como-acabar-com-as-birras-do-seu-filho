@@ -468,35 +468,6 @@ const Home = ({ setPage, quizAnswers, onLogout }: { setPage: (p: PageId) => void
         </div>
         <ChevronRight className="ml-auto text-text-muted" size={18} />
       </Card>
-
-      {/* Videos Section */}
-      <div className="space-y-3">
-        <h4 className="text-[10px] font-bold uppercase tracking-widest text-text-muted">Conteúdo complementar</h4>
-        
-        <div className="p-4 bg-card rounded-xl border border-white/5">
-          <p className="text-[9px] text-text-muted mb-3">Entenda melhor o que está por trás das birras e como agir sem piorar a situação.</p>
-          <div className="relative w-full h-[180px] rounded-lg overflow-hidden mb-3">
-            <iframe
-              className="absolute top-0 left-0 w-full h-full"
-              src="https://www.youtube.com/embed/4OFRAiE-FW4?rel=0&playsinline=1"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </div>
-        </div>
-
-        <div className="p-4 bg-card rounded-xl border border-white/5">
-          <p className="text-[9px] text-text-muted mb-3">Quando nada parece funcionar, o problema geralmente não é falta de esforço.</p>
-          <div className="relative w-full h-[180px] rounded-lg overflow-hidden">
-            <iframe
-              className="absolute top-0 left-0 w-full h-full"
-              src="https://www.youtube.com/embed/_yMtYNK7OuY?rel=0&playsinline=1"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </div>
-        </div>
-      </div>
     </div>
   );
 };
@@ -525,7 +496,7 @@ const CRISIS_DATA = [
     todo: ['Fale pouco', 'Mantenha a voz firme e baixa', 'Não tente convencer no meio da crise', 'Mantenha o limite com clareza'],
     avoid: ['Gritar de volta', 'Explicar demais', 'Ameaçar', 'Mudar a decisão só para o grito parar'],
     phrase: 'Eu entendi que você ficou bravo, mas eu não vou mudar isso agora.',
-    video: null
+    video: 'avLfgKBPf8o'
   },
   { 
     id: 'chao', 
@@ -565,7 +536,7 @@ const CRISIS_DATA = [
     todo: ['Pare por dois segundos', 'Respire', 'Fale o mínimo necessário', 'Reduza a velocidade da sua resposta'],
     avoid: ['Reagir no impulso', 'Continuar falando sem parar', 'Querer resolver tudo naquele segundo'],
     phrase: 'Eu vou continuar, mas preciso falar com calma.',
-    video: null
+    video: '4OFRAiE-FW4'
   }
 ];
 
@@ -583,61 +554,61 @@ const SITUATIONS_DATA = [
     id: 'mercado', 
     label: 'Mercado', 
     icon: ListTodo,
-    meaning: 'No mercado, a birra costuma crescer junto com a frustração e a pressão do ambiente.',
-    todo: ['Fale pouco', 'Mantenha a decisão', 'Não negocie no impulso', 'Priorize clareza e saída rápida se necessário'],
-    avoid: ['Ceder por vergonha', 'Discutir no meio do corredor', 'Explicar demais'],
-    phrase: 'Eu sei que você quer isso, mas hoje eu não vou levar.',
-    video: null
+    meaning: 'No mercado, a birra cresce junto com a frustração e a pressão do ambiente.',
+    todo: ['Fale pouco', 'Mantenha a decisão', 'Não negocie no impulso', 'Priorize clareza e saída rápida'],
+    avoid: ['Ceder por vergonha', 'Discutir no corredor', 'Explicar demais'],
+    phrase: 'Eu sei que você quer, mas hoje não vou levar.',
+    video: 'avLfgKBPf8o'
   },
   { 
     id: 'banho', 
     label: 'Banho', 
     icon: Sparkles,
-    meaning: 'O banho gera resistência quando interrompe outra atividade ou acontece em momento de cansaço.',
-    todo: ['Avise antes', 'Use frases curtas', 'Mantenha a transição', 'Conduza com calma e firmeza'],
-    avoid: ['Transformar em discussão', 'Dar muitos tempos extras', 'Voltar atrás porque reclamou'],
-    phrase: 'Agora é hora do banho. Depois a gente continua.',
-    video: '4OFRAiE-FW4'
+    meaning: 'O banho gera resistência quando interrompe outra atividade ou no cansaço.',
+    todo: ['Avise antes', 'Frases curtas', 'Mantenha transição', 'Conduza com calma'],
+    avoid: ['Transformar em discussão', 'Tempos extras', 'Voltar atrás'],
+    phrase: 'Agora é hora do banho. Depois continua.',
+    video: 'avLfgKBPf8o'
   },
   { 
     id: 'sair', 
     label: 'Hora de sair', 
     icon: Clock,
-    meaning: 'Sair de casa ou encerrar uma atividade gera crise quando a criança tem dificuldade com mudança.',
-    todo: ['Avise com antecedência', 'Mostre o que vai acontecer', 'Mantenha a decisão', 'Reduza fala na hora da resistência'],
-    avoid: ['Avisar e não cumprir', 'Negociar muitas vezes', 'Mudar o combinado'],
-    phrase: 'Agora nós vamos sair. Eu sei que você não gostou, mas vamos mesmo assim.',
-    video: null
+    meaning: 'Sair de casa ou encerrar atividade gera crise com mudança.',
+    todo: ['Avise antes', 'Mostre o que vai acontecer', 'Mantenha decisão', 'Reduza fala'],
+    avoid: ['Avisar e não cumprir', 'Negociar muito', 'Mudar combinado'],
+    phrase: 'Agora vamos sair. Eu sei que você não gostou, mas vamos.',
+    video: 'avLfgKBPf8o'
   },
   { 
     id: 'visitas', 
     label: 'Visitas', 
     icon: User,
-    meaning: 'Em visitas, a criança pode ficar mais estimulada e a mãe tende a se sentir mais pressionada.',
-    todo: ['Mantenha a mesma regra de casa', 'Fale pouco', 'Afaste da situação se necessário', 'Não ceda só para evitar julgamento'],
-    avoid: ['Relaxar todos os limites', 'Agir só pensando nos outros', 'Mudar a regra para acabar rápido'],
-    phrase: 'Você pode ficar bravo, mas eu não vou mudar isso agora.',
-    video: null
+    meaning: 'Em visitas, a criança fica mais estimulada e a mãe mais pressionada.',
+    todo: ['Mantenha mesma regra', 'Fale pouco', 'Afaste se necessário', 'Não ceda por julgamento'],
+    avoid: ['Relaxar limites', 'Agir pelos outros', 'Mudar regra para acabar'],
+    phrase: 'Você pode ficar bravo, mas não vou mudar isso.',
+    video: 'avLfgKBPf8o'
   },
   { 
     id: 'tela', 
     label: 'Tela', 
     icon: Zap,
-    meaning: 'A interrupção da tela gera crise porque a criança quer continuar e reage mal ao corte.',
-    todo: ['Avise antes do fim', 'Desligue quando chegar a hora', 'Mantenha a decisão', 'Redirecione para outra atividade'],
-    avoid: ['Desligar sem aviso toda vez', 'Voltar atrás depois da reclamação', 'Discutir demais'],
-    phrase: 'A tela acabou. Agora vamos para outra coisa.',
-    video: null
+    meaning: 'A interrupção da tela gera crise porque a criança quer continuar.',
+    todo: ['Avise antes do fim', 'Desligue na hora', 'Mantenha decisão', 'Redirecione'],
+    avoid: ['Sem aviso', 'Voltar atrás', 'Discutir demais'],
+    phrase: 'A tela acabou. Vamos para outra.',
+    video: 'avLfgKBPf8o'
   },
   { 
     id: 'brinquedos', 
     label: 'Guardar brinquedos', 
     icon: Target,
-    meaning: 'Guardar brinquedos é difícil porque encerra prazer e exige organização ao mesmo tempo.',
-    todo: ['Dê comando curto', 'Ajude no começo', 'Mantenha constância', 'Não transforme em briga longa'],
-    avoid: ['Pedir muitas vezes sem direção', 'Fazer tudo no lugar da criança', 'Desistir no meio'],
-    phrase: 'Agora é hora de guardar. Eu vou começar com você.',
-    video: '4OFRAiE-FW4'
+    meaning: 'Guardar é difícil porque encerra prazer e exige organização.',
+    todo: ['Comando curto', 'Ajude no começo', 'Mantenha constância', 'Não transforme em briga'],
+    avoid: ['Pedir sem direção', 'Fazer tudo pela criança', 'Desistir'],
+    phrase: 'Hora de guardar. Vou começar com você.',
+    video: 'avLfgKBPf8o'
   }
 ];
 
