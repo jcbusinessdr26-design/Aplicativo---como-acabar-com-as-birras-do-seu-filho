@@ -289,7 +289,7 @@ const Login = ({ onLogin }: { onLogin: (email: string) => void }) => {
         className="space-y-4"
       >
         <div className="text-center">
-          <div className="w-[437px] h-[175px] flex items-center justify-center mx-auto">
+          <div className="w-[85vw] max-w-[437px] h-auto aspect-[416/166] flex items-center justify-center mx-auto">
             <img 
               src="https://res.cloudinary.com/dbwe8j1uq/image/upload/v1775417666/Gemini_Generated_Image_ta0mvnta0mvnta0m-removebg-preview_mqyzbt.png" 
               alt="Logo" 
