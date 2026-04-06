@@ -162,14 +162,6 @@ const Background = () => (
     <div className="absolute top-1/2 right-1/4 opacity-5">
       <CheckSquare size={100} />
     </div>
-    <div className="absolute top-[180px] left-1/2 -translate-x-1/2 w-[200px]">
-      <img 
-        src="https://res.cloudinary.com/dbwe8j1uq/image/upload/v1775495277/ChatGPT_Image_6_de_abr._de_2026_13_54_37_km51kx.webp" 
-        alt="" 
-        className="w-full h-auto object-contain"
-        referrerPolicy="no-referrer"
-      />
-    </div>
   </div>
 );
 
@@ -385,6 +377,13 @@ const Home = ({ setPage, quizAnswers, onLogout }: { setPage: (p: PageId) => void
   
   return (
     <div className="space-y-6">
+      <img 
+        src="https://res.cloudinary.com/dbwe8j1uq/image/upload/v1775495277/ChatGPT_Image_6_de_abr._de_2026_13_54_37_km51kx.webp" 
+        alt="" 
+        className="w-full h-auto rounded-xl object-cover"
+        referrerPolicy="no-referrer"
+      />
+      
       <div className="flex items-center justify-between">
         <div className="flex-1 pr-4">
           <h2 className="text-xl font-bold leading-tight">{content.headline}</h2>
