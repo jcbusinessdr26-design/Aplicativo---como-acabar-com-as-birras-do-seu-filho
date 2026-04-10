@@ -31,7 +31,8 @@ import {
   XCircle,
   Volume2,
   Heart,
-  AlertCircle
+  AlertCircle,
+  Users
 } from 'lucide-react';
 import { cn } from './lib/utils';
 import { PageId, TabId, QuizAnswers, QuizContext, QuizTrigger, QuizReaction, QuizPain, QuizIntensity } from './types';
@@ -379,37 +380,86 @@ const Home = ({ setPage, quizAnswers, onLogout }: { setPage: (p: PageId) => void
   
   return (
     <div className="space-y-8">
-      {/* TOPO - Limpo e com bom espaçamento */}
-      <div className="pt-2">
-        <h2 className="text-2xl font-bold leading-tight">Qual dessas situações mais acontece com seu filho?</h2>
-        <p className="text-text-muted text-sm mt-2 leading-relaxed">Toque na situação e veja o que fazer com mais calma, firmeza e menos estresse.</p>
+      {/* BANNER PRINCIPAL - Crise agora */}
+      <Card onClick={() => setPage('crises')} className="relative overflow-hidden bg-gradient-to-br from-red-600 via-red-500 to-orange-500 border-none p-0">
+        <div className="absolute -right-8 -top-8 w-32 h-32 bg-white/10 rounded-full" />
+        <div className="absolute -bottom-12 -left-12 w-24 h-24 bg-white/5 rounded-full" />
+        <div className="relative p-6 flex flex-col items-start gap-3">
+          <div className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center">
+            <Zap size={28} className="text-white" />
+          </div>
+          <div>
+            <h2 className="text-xl font-bold text-white leading-tight">Seu filho está em crise agora?</h2>
+            <p className="text-red-100 text-sm mt-1.5"> Veja exatamente o que fazer sem gritar, sem ceder e sem piorar.</p>
+          </div>
+          <div className="w-full py-2.5 px-4 bg-white/20 rounded-xl flex items-center justify-center">
+            <span className="text-white font-semibold text-sm">Ver o que fazer agora</span>
+          </div>
+        </div>
+      </Card>
+
+      {/* BANNERS DE DESTAQUE */}
+      <div className="space-y-4">
+        <h3 className="text-xs font-bold uppercase tracking-wider text-text-muted">Situação mais comum</h3>
+        
+        <Card onClick={() => setPage('crises')} className="relative overflow-hidden bg-gradient-to-br from-red-500/20 to-red-500/5 border-red-500/30 p-0">
+          <div className="absolute right-0 top-0 w-24 h-full bg-gradient-to-l from-red-500/10 to-transparent" />
+          <div className="p-5 flex items-center gap-4">
+            <div className="w-14 h-14 rounded-2xl bg-red-500/20 flex items-center justify-center shrink-0">
+              <MessageSquare size={28} className="text-red-400" />
+            </div>
+            <div className="flex-1">
+              <h4 className="font-bold text-lg text-white">Ele está gritando</h4>
+              <p className="text-red-300 text-xs mt-0.5">O que fazer na hora sem perder o controle</p>
+            </div>
+            <ChevronRight size={22} className="text-red-400" />
+          </div>
+        </Card>
+        
+        <Card onClick={() => setPage('crises')} className="relative overflow-hidden bg-gradient-to-br from-orange-500/20 to-orange-500/5 border-orange-500/30 p-0">
+          <div className="absolute right-0 top-0 w-24 h-full bg-gradient-to-l from-orange-500/10 to-transparent" />
+          <div className="p-5 flex items-center gap-4">
+            <div className="w-14 h-14 rounded-2xl bg-orange-500/20 flex items-center justify-center shrink-0">
+              <Hand size={28} className="text-orange-400" />
+            </div>
+            <div className="flex-1">
+              <h4 className="font-bold text-lg text-white">Ele se jogou no chão</h4>
+              <p className="text-orange-300 text-xs mt-0.5">Como agir sem piorar a situação</p>
+            </div>
+            <ChevronRight size={22} className="text-orange-400" />
+          </div>
+        </Card>
       </div>
 
-      {/* BLOCO PRINCIPAL - Cards grandes e premium */}
-      <div className="space-y-4">
-        <div className="flex items-center justify-between">
-          <h3 className="text-xs font-bold uppercase tracking-wider text-primary">Escolha a situação</h3>
-        </div>
+      {/* OUTROS CARDS */}
+      <div className="space-y-3">
+        <h3 className="text-xs font-bold uppercase tracking-wider text-text-muted">Outras situações</h3>
         
-        <div className="grid grid-cols-2 gap-4">
-          {[
-            { id: 'gritando', label: 'Ele está gritando', sub: 'Veja o que fazer' },
-            { id: 'chao', label: 'Ele se jogou no chão', sub: 'Saiba como agir' },
-            { id: 'enfrentando', label: 'Ele está me enfrentando', sub: 'Responda com firmeza' },
-            { id: 'nao-aceita', label: 'Ele não aceita "não"', sub: 'Mantenha o limite' },
-            { id: 'publico', label: 'Birra em público', sub: 'Sem agir por vergonha' },
-            { id: 'limite', label: 'Quase perdendo o controle', sub: 'Use antes de reagir', urgent: true }
-          ].map(item => (
-            <Card key={item.id} onClick={() => setPage('crises')} className={cn("flex flex-col justify-between min-h-[140px] py-5 px-4", item.urgent && "bg-gradient-to-br from-orange-500/15 to-orange-500/5 border-orange-500/30")}>
-              <div>
-                <div className={cn("w-12 h-12 rounded-2xl flex items-center justify-center mb-3", item.urgent ? "bg-orange-500/20" : "bg-red-500/15")}>
-                  <Zap size={24} className={item.urgent ? "text-orange-400" : "text-red-400"} />
-                </div>
-                <h4 className="font-bold text-base leading-tight">{item.label}</h4>
-              </div>
-              <p className="text-xs text-text-muted">{item.sub}</p>
-            </Card>
-          ))}
+        <div className="grid grid-cols-2 gap-3">
+          <Card onClick={() => setPage('crises')} className="flex flex-col justify-between min-h-[100px] py-4 px-3.5">
+            <div className="w-9 h-9 rounded-lg bg-blue-500/15 flex items-center justify-center mb-2">
+              <ShieldCheck size={18} className="text-blue-400" />
+            </div>
+            <h4 className="font-semibold text-sm">Ele me enfrenta</h4>
+          </Card>
+          <Card onClick={() => setPage('crises')} className="flex flex-col justify-between min-h-[100px] py-4 px-3.5">
+            <div className="w-9 h-9 rounded-lg bg-primary/15 flex items-center justify-center mb-2">
+              <AlertTriangle size={18} className="text-primary" />
+            </div>
+            <h4 className="font-semibold text-sm">Não aceita "não"</h4>
+          </Card>
+          <Card onClick={() => setPage('crises')} className="flex flex-col justify-between min-h-[100px] py-4 px-3.5">
+            <div className="w-9 h-9 rounded-lg bg-purple-500/15 flex items-center justify-center mb-2">
+              <Users size={18} className="text-purple-400" />
+            </div>
+            <h4 className="font-semibold text-sm">Birra em público</h4>
+          </Card>
+          <Card onClick={() => setPage('recover-control')} className="flex flex-col justify-between min-h-[100px] py-4 px-3.5 bg-orange-500/10 border-orange-500/20">
+            <div className="w-9 h-9 rounded-lg bg-orange-500/20 flex items-center justify-center mb-2">
+              <Heart size={18} className="text-orange-400" />
+            </div>
+            <h4 className="font-semibold text-sm">Quase perdendo o controle</h4>
+          </Card>
         </div>
       </div>
 
