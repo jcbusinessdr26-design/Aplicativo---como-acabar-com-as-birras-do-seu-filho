@@ -380,171 +380,168 @@ const Home = ({ setPage, quizAnswers, onLogout }: { setPage: (p: PageId) => void
   
   return (
     <div className="space-y-6 pb-6">
-      {/* 1. BANNER HERO PRINCIPAL */}
-      <Card onClick={() => setPage('crises')} className="relative overflow-hidden h-[200px] border-none p-0 cursor-pointer group">
-        <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=600&h=350&fit=crop&q=80" alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10" />
-        <div className="absolute bottom-0 left-0 right-0 p-6">
-          <h2 className="text-2xl font-bold text-white leading-tight">Seu filho faz birra e você não sabe o que fazer?</h2>
-          <p className="text-gray-300 text-sm mt-2">Saiba como agir com mais calma, firmeza e menos estresse.</p>
-          <div className="mt-4 inline-flex items-center gap-2 px-5 py-2.5 bg-white/20 backdrop-blur rounded-xl">
-            <span className="text-white font-semibold">Ver situações</span>
-            <ChevronRight size={18} className="text-white" />
+      {/* 1. TOP BAR */}
+      <div className="flex items-center justify-between py-3">
+        <h1 className="text-lg font-bold text-white">Plano Anti-Birra</h1>
+        <button onClick={onLogout} className="w-10 h-10 rounded-full bg-card flex items-center justify-center border border-white/10 hover:bg-white/5 transition-colors">
+          <User size={20} className="text-primary" />
+        </button>
+      </div>
+
+      {/* 2. BANNER HERO PRINCIPAL */}
+      <Card onClick={() => setPage('crises')} className="relative overflow-hidden h-[180px] border-none p-0 cursor-pointer group">
+        <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=600&h=300&fit=crop&q=80" alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/5" />
+        <div className="absolute bottom-0 left-0 right-0 p-5">
+          <h2 className="text-xl font-bold text-white leading-tight">Seu filho faz birra e você não sabe o que fazer?</h2>
+          <p className="text-gray-300 text-sm mt-1.5">Saiba como agir com mais calma, firmeza e menos estresse.</p>
+          <div className="mt-3 inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur rounded-lg">
+            <span className="text-white text-sm font-medium">Ver situações</span>
+            <ChevronRight size={16} className="text-white" />
           </div>
         </div>
       </Card>
 
-      {/* 2. BANNERS DE SITUAÇÕES PRINCIPAIS */}
-      <div className="space-y-4">
-        <h3 className="text-xs font-bold uppercase tracking-wider text-text-muted">Situação mais comum</h3>
-        
-        {/* Banner 1: Ele está gritando */}
-        <Card onClick={() => setPage('crises')} className="relative overflow-hidden h-[130px] border-none p-0 cursor-pointer group">
-          <img src="https://images.unsplash.com/photo-1606092195730-5c9693e97d95?w=600&h=200&fit=crop&q=80" alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-          <div className="absolute bottom-0 left-0 right-0 p-4 flex items-center justify-between">
-            <div>
-              <h4 className="font-bold text-lg text-white">Ele está gritando</h4>
-              <p className="text-gray-300 text-xs">O que fazer sem perder o controle</p>
-            </div>
-            <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur flex items-center justify-center">
-              <ChevronRight size={20} className="text-white" />
-            </div>
+      {/* 3. TÍTULO: SITUAÇÕES MAIS COMUNS */}
+      <div className="space-y-1">
+        <h3 className="text-sm font-bold text-white">Situações mais comuns</h3>
+        <p className="text-xs text-text-muted">Escolha a situação e veja o que fazer.</p>
+      </div>
+
+      {/* 4. GRID 2 COLUNAS — MINI-BANNERS PRINCIPAIS */}
+      <div className="grid grid-cols-2 gap-3">
+        {/* Mini-banner 1: Ele está gritando */}
+        <Card onClick={() => setPage('crises')} className="relative overflow-hidden h-[100px] border-none p-0 cursor-pointer group">
+          <img src="https://images.unsplash.com/photo-1606092195730-5c9693e97d95?w=300&h=150&fit=crop&q=80" alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 p-3">
+            <h4 className="font-semibold text-white text-sm">Ele está gritando</h4>
+            <p className="text-gray-400 text-[10px]">Veja o que fazer</p>
           </div>
         </Card>
 
-        {/* Banner 2: Ele se jogou no chão */}
-        <Card onClick={() => setPage('crises')} className="relative overflow-hidden h-[130px] border-none p-0 cursor-pointer group">
-          <img src="https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=600&h=200&fit=crop&q=80" alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-          <div className="absolute bottom-0 left-0 right-0 p-4 flex items-center justify-between">
-            <div>
-              <h4 className="font-bold text-lg text-white">Ele se jogou no chão</h4>
-              <p className="text-gray-300 text-xs">Como agir sem piorar</p>
-            </div>
-            <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur flex items-center justify-center">
-              <ChevronRight size={20} className="text-white" />
-            </div>
+        {/* Mini-banner 2: Ele se jogou no chão */}
+        <Card onClick={() => setPage('crises')} className="relative overflow-hidden h-[100px] border-none p-0 cursor-pointer group">
+          <img src="https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=300&h=150&fit=crop&q=80" alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 p-3">
+            <h4 className="font-semibold text-white text-sm">Ele se jogou no chão</h4>
+            <p className="text-gray-400 text-[10px]">Como agir sem piorar</p>
           </div>
         </Card>
 
-        {/* Banner 3: Ele está me enfrentando */}
-        <Card onClick={() => setPage('crises')} className="relative overflow-hidden h-[130px] border-none p-0 cursor-pointer group">
-          <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=600&h=200&fit=crop&q=80" alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-          <div className="absolute bottom-0 left-0 right-0 p-4 flex items-center justify-between">
-            <div>
-              <h4 className="font-bold text-lg text-white">Ele está me enfrentando</h4>
-              <p className="text-gray-300 text-xs">Responda com firmeza</p>
-            </div>
-            <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur flex items-center justify-center">
-              <ChevronRight size={20} className="text-white" />
-            </div>
+        {/* Mini-banner 3: Ele não aceita "não" */}
+        <Card onClick={() => setPage('crises')} className="relative overflow-hidden h-[100px] border-none p-0 cursor-pointer group">
+          <img src="https://images.unsplash.com/photo-1506126611408-ee5fc9085d9c?w=300&h=150&fit=crop&q=80" alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 p-3">
+            <h4 className="font-semibold text-white text-sm">Ele não aceita "não"</h4>
+            <p className="text-gray-400 text-[10px]">Mantenha o limite</p>
           </div>
         </Card>
 
-        {/* Banner 4: Ele não aceita "não" */}
-        <Card onClick={() => setPage('crises')} className="relative overflow-hidden h-[130px] border-none p-0 cursor-pointer group">
-          <img src="https://images.unsplash.com/photo-1506126611408-ee5fc9085d9c?w=600&h=200&fit=crop&q=80" alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-          <div className="absolute bottom-0 left-0 right-0 p-4 flex items-center justify-between">
-            <div>
-              <h4 className="font-bold text-lg text-white">Ele não aceita "não"</h4>
-              <p className="text-gray-300 text-xs">Mantenha o limite</p>
-            </div>
-            <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur flex items-center justify-center">
-              <ChevronRight size={20} className="text-white" />
-            </div>
-          </div>
-        </Card>
-
-        {/* Banner 5: Birra em público */}
-        <Card onClick={() => setPage('crises')} className="relative overflow-hidden h-[130px] border-none p-0 cursor-pointer group">
-          <img src="https://images.unsplash.com/photo-1609220136736-443140c20efc?w=600&h=200&fit=crop&q=80" alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-          <div className="absolute bottom-0 left-0 right-0 p-4 flex items-center justify-between">
-            <div>
-              <h4 className="font-bold text-lg text-white">Birra em público</h4>
-              <p className="text-gray-300 text-xs">Sem agir por vergonha</p>
-            </div>
-            <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur flex items-center justify-center">
-              <ChevronRight size={20} className="text-white" />
-            </div>
-          </div>
-        </Card>
-
-        {/* Banner 6: Quase perdendo o controle */}
-        <Card onClick={() => setPage('recover-control')} className="relative overflow-hidden h-[130px] border-orange-500/30 p-0 cursor-pointer group">
-          <img src="https://images.unsplash.com/photo-1506126611408-ee5fc9085d9c?w=600&h=200&fit=crop&q=80" alt="" className="absolute inset-0 w-full h-full object-cover opacity-50" />
+        {/* Mini-banner 4: Quase perdendo o controle */}
+        <Card onClick={() => setPage('recover-control')} className="relative overflow-hidden h-[100px] border-orange-500/30 p-0 cursor-pointer group">
+          <img src="https://images.unsplash.com/photo-1506126611408-ee5fc9085d9c?w=300&h=150&fit=crop&q=80" alt="" className="absolute inset-0 w-full h-full object-cover opacity-60" />
           <div className="absolute inset-0 bg-gradient-to-t from-orange-900/80 via-orange-900/40 to-transparent" />
-          <div className="absolute bottom-0 left-0 right-0 p-4 flex items-center justify-between">
-            <div>
-              <h4 className="font-bold text-lg text-white">Quase perdendo o controle</h4>
-              <p className="text-orange-300 text-xs">Use antes de reagir</p>
-            </div>
-            <div className="w-10 h-10 rounded-full bg-orange-500/40 backdrop-blur flex items-center justify-center">
-              <ChevronRight size={20} className="text-white" />
-            </div>
+          <div className="absolute bottom-0 left-0 right-0 p-3">
+            <h4 className="font-semibold text-white text-sm">Quase perdendo o controle</h4>
+            <p className="text-orange-300 text-[10px]">Use antes de reagir</p>
           </div>
         </Card>
       </div>
 
-      {/* 3. BANNER DO MÉTODO */}
-      <Card onClick={() => {}} className="relative overflow-hidden h-[120px] border-secondary/30 p-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-secondary/40 to-secondary/60" />
-        <div className="absolute inset-0 p-5 flex items-center justify-between">
-          <div>
-            <h3 className="font-bold text-lg text-white">Sistema Anti-Birra de 3 Etapas</h3>
-            <p className="text-secondary-200 text-xs mt-1">Interrompa, responda e reduza.</p>
-            <div className="flex gap-2 mt-3">
-              <span className="px-3 py-1.5 bg-white/15 rounded-lg text-white text-xs">1. Interromper</span>
-              <span className="px-3 py-1.5 bg-white/15 rounded-lg text-white text-xs">2. Responder</span>
-              <span className="px-3 py-1.5 bg-white/15 rounded-lg text-white text-xs">3. Reduzir</span>
-            </div>
-          </div>
-          <ChevronRight size={24} className="text-white/60" />
-        </div>
-      </Card>
+      {/* 5. TÍTULO: OUTRAS SITUAÇÕES */}
+      <div className="space-y-1">
+        <h3 className="text-xs font-medium text-text-muted">Outras situações</h3>
+      </div>
 
-      {/* 4. BANNERS DE APOIO */}
+      {/* 6. GRID 2 COLUNAS — MINI-BANNERS SECUNDÁRIOS */}
+      <div className="grid grid-cols-2 gap-3">
+        {/* Mini-banner 5: Ele está me enfrentando */}
+        <Card onClick={() => setPage('crises')} className="relative overflow-hidden h-[90px] border-primary/30 p-0 cursor-pointer group">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/40 to-primary/20" />
+          <div className="absolute inset-0 p-3 flex items-center justify-between">
+            <div>
+              <h4 className="font-medium text-white text-sm">Ele está me enfrentando</h4>
+              <p className="text-primary-200 text-[10px]">Responda com firmeza</p>
+            </div>
+            <ChevronRight size={16} className="text-primary" />
+          </div>
+        </Card>
+
+        {/* Mini-banner 6: Birra em público */}
+        <Card onClick={() => setPage('crises')} className="relative overflow-hidden h-[90px] border-purple-500/30 p-0 cursor-pointer group">
+          <div className="absolute inset-0 bg-gradient-to-br from-purple-500/40 to-purple-500/20" />
+          <div className="absolute inset-0 p-3 flex items-center justify-between">
+            <div>
+              <h4 className="font-medium text-white text-sm">Birra em público</h4>
+              <p className="text-purple-200 text-[10px]">Sem agir por vergonha</p>
+            </div>
+            <ChevronRight size={16} className="text-purple-400" />
+          </div>
+        </Card>
+      </div>
+
+      {/* 7. BLOCO DO MÉTODO */}
       <div className="space-y-3">
-        {/* Banner apoio 1: Frases */}
-        <Card onClick={() => setPage('phrases')} className="relative overflow-hidden h-[80px] border-green-500/20 p-0 cursor-pointer group">
-          <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=400&h=120&fit=crop&q=80" alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-          <div className="absolute bottom-0 left-0 right-0 p-4 flex items-center justify-between">
-            <div>
-              <h4 className="font-semibold text-white">Frases para usar</h4>
-              <p className="text-gray-400 text-xs">O que dizer na hora</p>
-            </div>
-            <ChevronRight size={18} className="text-green-400" />
+        <h3 className="text-sm font-bold text-white">Sistema Anti-Birra de 3 Etapas</h3>
+        <p className="text-xs text-text-muted">Interrompa o caos, responda com firmeza e reduza as próximas crises.</p>
+        
+        <div className="grid grid-cols-3 gap-2">
+          <div className="p-3 bg-secondary/20 rounded-xl border border-secondary/30">
+            <span className="block text-secondary font-bold text-sm">1</span>
+            <h4 className="font-medium text-white text-xs mt-1">Interromper</h4>
+            <p className="text-[9px] text-text-muted">O que fazer para não piorar</p>
           </div>
-        </Card>
+          <div className="p-3 bg-secondary/20 rounded-xl border border-secondary/30">
+            <span className="block text-secondary font-bold text-sm">2</span>
+            <h4 className="font-medium text-white text-xs mt-1">Responder</h4>
+            <p className="text-[9px] text-text-muted">O que dizer e como agir</p>
+          </div>
+          <div className="p-3 bg-secondary/20 rounded-xl border border-secondary/30">
+            <span className="block text-secondary font-bold text-sm">3</span>
+            <h4 className="font-medium text-white text-xs mt-1">Reduzir</h4>
+            <p className="text-[9px] text-text-muted">Treinos e ajustes simples</p>
+          </div>
+        </div>
+      </div>
 
-        {/* Banner apoio 2: Recupere o controle */}
-        <Card onClick={() => setPage('recover-control')} className="relative overflow-hidden h-[80px] border-orange-500/20 p-0 cursor-pointer group">
-          <img src="https://images.unsplash.com/photo-1506126611408-ee5fc9085d9c?w=400&h=120&fit=crop&q=80" alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-          <div className="absolute bottom-0 left-0 right-0 p-4 flex items-center justify-between">
-            <div>
-              <h4 className="font-semibold text-white">Recupere o controle</h4>
-              <p className="text-gray-400 text-xs">Antes de reagir</p>
-            </div>
-            <ChevronRight size={18} className="text-orange-400" />
+      {/* 8. BLOCO APOIOS RÁPIDOS */}
+      <div className="space-y-3">
+        <h3 className="text-xs font-medium text-text-muted uppercase tracking-wider">Apoios rápidos</h3>
+        
+        <Card onClick={() => setPage('phrases')} className="flex items-center gap-3 p-3 bg-green-500/10 border-green-500/20">
+          <div className="w-8 h-8 rounded-lg bg-green-500/20 flex items-center justify-center">
+            <Quote size={16} className="text-green-400" />
           </div>
+          <div className="flex-1">
+            <h4 className="font-medium text-white text-sm">Frases para usar</h4>
+            <p className="text-[10px] text-text-muted">O que dizer sem gritar e sem ceder</p>
+          </div>
+          <ChevronRight size={16} className="text-green-400" />
         </Card>
-
-        {/* Banner apoio 3: Reduza as crises */}
-        <Card onClick={() => setPage('prevent')} className="relative overflow-hidden h-[80px] border-primary/20 p-0 cursor-pointer group">
-          <img src="https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=400&h=120&fit=crop&q=80" alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-          <div className="absolute bottom-0 left-0 right-0 p-4 flex items-center justify-between">
-            <div>
-              <h4 className="font-semibold text-white">Reduza as próximoas crises</h4>
-              <p className="text-gray-400 text-xs">Treinos para o dia a dia</p>
-            </div>
-            <ChevronRight size={18} className="text-primary" />
+        
+        <Card onClick={() => setPage('recover-control')} className="flex items-center gap-3 p-3 bg-orange-500/10 border-orange-500/20">
+          <div className="w-8 h-8 rounded-lg bg-orange-500/20 flex items-center justify-center">
+            <Heart size={16} className="text-orange-400" />
           </div>
+          <div className="flex-1">
+            <h4 className="font-medium text-white text-sm">Recupere o controle</h4>
+            <p className="text-[10px] text-text-muted">Um apoio para não reagir no impulso</p>
+          </div>
+          <ChevronRight size={16} className="text-orange-400" />
+        </Card>
+        
+        <Card onClick={() => setPage('prevent')} className="flex items-center gap-3 p-3 bg-primary/10 border-primary/20">
+          <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center">
+            <Target size={16} className="text-primary" />
+          </div>
+          <div className="flex-1">
+            <h4 className="font-medium text-white text-sm">Reduza as próximas crises</h4>
+            <p className="text-[10px] text-text-muted">Treinos para aplicar no dia a dia</p>
+          </div>
+          <ChevronRight size={16} className="text-primary" />
         </Card>
       </div>
     </div>
