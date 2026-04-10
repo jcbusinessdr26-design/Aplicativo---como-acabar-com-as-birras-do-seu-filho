@@ -41,7 +41,7 @@ import { PageId, TabId, QuizAnswers, QuizContext, QuizTrigger, QuizReaction, Qui
 
 const getPersonalizedContent = (answers: QuizAnswers | null) => {
   const defaults = {
-    headline: "Plano Anti-Birra",
+    headline: "Plano de Ação ANTI-BIRRA",
     subheadline: "Firmeza e menos estresse",
     supportMessage: "Vamos reduzir o estresse e trazer mais clareza para esses momentos.",
     urgencyText: "Seu plano foi organizado para corrigir o padrão antes que ele se fortaleça.",
@@ -382,7 +382,7 @@ const Home = ({ setPage, quizAnswers, onLogout }: { setPage: (p: PageId) => void
     <div className="space-y-6 pb-6">
       {/* 1. TOP BAR */}
       <div className="flex items-center justify-between py-3">
-        <h1 className="text-lg font-bold text-white">Plano Anti-Birra</h1>
+        <h1 className="text-lg font-bold text-white">Plano de Ação ANTI-BIRRA</h1>
         <button onClick={onLogout} className="w-10 h-10 rounded-full bg-card flex items-center justify-center border border-white/10 hover:bg-white/5 transition-colors">
           <User size={20} className="text-primary" />
         </button>
@@ -533,21 +533,21 @@ const Home = ({ setPage, quizAnswers, onLogout }: { setPage: (p: PageId) => void
         <p className="text-xs text-text-muted">Interrompa o caos, responda com firmeza e reduza as próximas crises.</p>
         
         <div className="grid grid-cols-3 gap-2">
-          <div className="p-3 bg-secondary/20 rounded-xl border border-secondary/30">
+          <Card onClick={() => setPage('etapa-1')} className="p-3 bg-secondary/20 rounded-xl border border-secondary/30 cursor-pointer hover:bg-secondary/30">
             <span className="block text-secondary font-bold text-sm">1</span>
             <h4 className="font-medium text-white text-xs mt-1">Interromper</h4>
             <p className="text-[9px] text-text-muted">O que fazer para não piorar</p>
-          </div>
-          <div className="p-3 bg-secondary/20 rounded-xl border border-secondary/30">
+          </Card>
+          <Card onClick={() => setPage('etapa-2')} className="p-3 bg-secondary/20 rounded-xl border border-secondary/30 cursor-pointer hover:bg-secondary/30">
             <span className="block text-secondary font-bold text-sm">2</span>
             <h4 className="font-medium text-white text-xs mt-1">Responder</h4>
             <p className="text-[9px] text-text-muted">O que dizer e como agir</p>
-          </div>
-          <div className="p-3 bg-secondary/20 rounded-xl border border-secondary/30">
+          </Card>
+          <Card onClick={() => setPage('etapa-3')} className="p-3 bg-secondary/20 rounded-xl border border-secondary/30 cursor-pointer hover:bg-secondary/30">
             <span className="block text-secondary font-bold text-sm">3</span>
             <h4 className="font-medium text-white text-xs mt-1">Reduzir</h4>
             <p className="text-[9px] text-text-muted">Treinos e ajustes simples</p>
-          </div>
+          </Card>
         </div>
       </div>
 
@@ -1210,6 +1210,172 @@ export default function App() {
         return <Home setPage={setCurrentPage} quizAnswers={quizAnswers} onLogout={handleLogout} />;
     }
   };
+
+  // === NOVAS TELAS ===
+  
+  // Etapa 1: Interromper o caos
+  if (currentPage === 'etapa-1') {
+    return (
+      <GenericPage title="1. Interromper o caos" icon={Zap} onBack={() => setCurrentPage('now')}>
+        <div className="space-y-4">
+          <p className="text-sm text-text-muted">O que fazer para não piorar a situação no momento da birra.</p>
+          
+          <Card className="p-4 bg-green-500/10 border-green-500/20">
+            <h4 className="font-bold text-green-400 text-sm mb-2">Quando usar</h4>
+            <p className="text-xs text-text-muted">Use isso quando a birra já começou e você sente que a situação está saindo do controle.</p>
+          </Card>
+          
+          <Card className="p-4">
+            <h4 className="font-bold text-white text-sm mb-3">O que fazer primeiro</h4>
+            <ol className="space-y-2">
+              {['Pare por 2 segundos antes de responder.', 'Não grite de volta.', 'Abaixe o tom da voz.', 'Use uma frase curta e firme.', 'Evite discutir no auge da crise.'].map((step, i) => (
+                <li key={i} className="text-xs text-text-muted flex gap-2">
+                  <span className="text-green-400 font-bold">{i + 1}.</span> {step}
+                </li>
+              ))}
+            </ol>
+          </Card>
+          
+          <Card className="p-4 bg-red-500/10 border-red-500/20">
+            <h4 className="font-bold text-red-400 text-sm mb-2">O que evitar</h4>
+            <ul className="space-y-1">
+              {['gritar', 'ameaçar no impulso', 'falar demais', 'tentar convencer na crise', 'ceder só para acabar logo'].map((item, i) => (
+                <li key={i} className="text-xs text-text-muted flex gap-2">
+                  <span className="text-red-400">×</span> {item}
+                </li>
+              ))}
+            </ul>
+          </Card>
+          
+          <Card className="p-4 bg-primary/10 border-primary/20">
+            <h4 className="font-bold text-primary text-sm mb-2">Frase para usar</h4>
+            <p className="text-xs text-text-muted italic">"Eu entendi que você está bravo, mas eu não vou mudar isso."</p>
+          </Card>
+        </div>
+      </GenericPage>
+    );
+  }
+  
+  // Etapa 2: Responder com firmeza
+  if (currentPage === 'etapa-2') {
+    return (
+      <GenericPage title="2. Responder com firmeza" icon={ShieldCheck} onBack={() => setCurrentPage('now')}>
+        <div className="space-y-4">
+          <p className="text-sm text-text-muted">O que dizer e como agir sem gritar e sem ceder.</p>
+          
+          <Card className="p-4 bg-green-500/10 border-green-500/20">
+            <h4 className="font-bold text-green-400 text-sm mb-2">O que isso significa</h4>
+            <p className="text-xs text-text-muted">Responder com firmeza não é gritar mais alto. É manter a decisão com calma, clareza e consistência.</p>
+          </Card>
+          
+          <Card className="p-4">
+            <h4 className="font-bold text-white text-sm mb-3">Como agir</h4>
+            <ol className="space-y-2">
+              {['Fale pouco.', 'Dê uma instrução clara.', 'Não negocie no auge da crise.', 'Mantenha o limite.', 'Encerre a fala e sustente a decisão.'].map((step, i) => (
+                <li key={i} className="text-xs text-text-muted flex gap-2">
+                  <span className="text-green-400 font-bold">{i + 1}.</span> {step}
+                </li>
+              ))}
+            </ol>
+          </Card>
+          
+          <Card className="p-4 bg-red-500/10 border-red-500/20">
+            <h4 className="font-bold text-red-400 text-sm mb-2">O que evitar</h4>
+            <ul className="space-y-1">
+              {['explicar demais', 'repetir mil vezes', 'ameaçar e não cumprir', 'voltar atrás por cansaço'].map((item, i) => (
+                <li key={i} className="text-xs text-text-muted flex gap-2">
+                  <span className="text-red-400">×</span> {item}
+                </li>
+              ))}
+            </ul>
+          </Card>
+          
+          <Card className="p-4 bg-primary/10 border-primary/20">
+            <h4 className="font-bold text-primary text-sm mb-2">Frases para usar</h4>
+            <ul className="space-y-1">
+              {['Agora não.', 'Você pode ficar bravo, mas isso não vai mudar.', 'Eu não vou discutir. Eu vou manter o que foi dito.'].map((phrase, i) => (
+                <li key={i} className="text-xs text-text-muted italic">"{phrase}"</li>
+              ))}
+            </ul>
+          </Card>
+        </div>
+      </GenericPage>
+    );
+  }
+  
+  // Etapa 3: Reduzir as próximas crises
+  if (currentPage === 'etapa-3') {
+    return (
+      <GenericPage title="3. Reduzir crises" icon={Target} onBack={() => setCurrentPage('now')}>
+        <div className="space-y-4">
+          <p className="text-sm text-text-muted">Treinos e ajustes simples para diminuir as birras no dia a dia.</p>
+          
+          <Card className="p-4 bg-green-500/10 border-green-500/20">
+            <h4 className="font-bold text-green-400 text-sm mb-2">Por onde começar</h4>
+            <p className="text-xs text-text-muted">A birra não diminui só na hora da crise. Ela diminui quando você muda a forma de conduzir certas situações antes delas explodirem.</p>
+          </Card>
+          
+          <Card className="p-4">
+            <h4 className="font-bold text-white text-sm mb-3">Treinos principais</h4>
+            <ul className="space-y-2">
+              {['Treino do "acabou"', 'Treino do "não com calma"', 'Treino de transição'].map((treino, i) => (
+                <li key={i} className="text-xs text-text-muted flex gap-2">
+                  <span className="text-green-400">•</span> {treino}
+                </li>
+              ))}
+            </ul>
+          </Card>
+          
+          <Card onClick={() => setCurrentPage('prevent')} className="p-4 bg-primary/10 border-primary/20 cursor-pointer hover:bg-primary/20">
+            <h4 className="font-bold text-primary text-sm mb-2">Plano de 7 dias</h4>
+            <p className="text-xs text-text-muted">Aplique pequenas mudanças por 7 dias para começar a reduzir gatilhos.</p>
+            <div className="mt-2 inline-flex items-center gap-1 text-primary text-xs">
+              <span>Começar plano</span>
+              <ChevronRight size={14} />
+            </div>
+          </Card>
+        </div>
+      </GenericPage>
+    );
+  }
+  
+  // Recupere o controle
+  if (currentPage === 'recover-control') {
+    return (
+      <GenericPage title="Recupere o controle" icon={Heart} onBack={() => setCurrentPage('now')}>
+        <div className="space-y-4">
+          <p className="text-sm text-text-muted">Use isso antes de reagir no impulso.</p>
+          
+          <Card className="p-4 bg-orange-500/10 border-orange-500/20">
+            <h4 className="font-bold text-orange-400 text-sm mb-3">Faça isso agora</h4>
+            <ol className="space-y-2">
+              {['Pare de falar por 2 segundos.', 'Respire fundo uma vez.', 'Solte o ar devagar.', 'Repita: "Eu não preciso reagir agora."'].map((step, i) => (
+                <li key={i} className="text-xs text-text-muted flex gap-2">
+                  <span className="text-orange-400 font-bold">{i + 1}.</span> {step}
+                </li>
+              ))}
+            </ol>
+          </Card>
+          
+          <Card className="p-4">
+            <h4 className="font-bold text-white text-sm mb-2">Frases para você</h4>
+            <ul className="space-y-1">
+              {['Eu consigo manter a calma aqui.', 'Eu não preciso resolver isso no grito.', 'Responder melhor agora evita culpa depois.'].map((phrase, i) => (
+                <li key={i} className="text-xs text-text-muted italic">"{phrase}"</li>
+              ))}
+            </ul>
+          </Card>
+          
+          <Card onClick={() => setCurrentPage('audios')} className="p-4 bg-purple-500/10 border-purple-500/20 cursor-pointer hover:bg-purple-500/20">
+            <h4 className="font-bold text-purple-400 text-sm mb-2">Ouça agora</h4>
+            <p className="text-xs text-text-muted">Áudios de apoio para momentos de tensão.</p>
+          </Card>
+        </div>
+      </GenericPage>
+    );
+  }
+
+  // === FIM NOVAS TELAS ===
 
   if (currentPage === 'login') return <Login onLogin={handleLogin} />;
 
