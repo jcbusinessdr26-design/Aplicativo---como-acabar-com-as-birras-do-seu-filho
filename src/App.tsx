@@ -378,97 +378,102 @@ const Home = ({ setPage, quizAnswers, onLogout }: { setPage: (p: PageId) => void
   const content = getPersonalizedContent(quizAnswers);
   
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <div className="flex-1 pr-4">
-          <h2 className="text-xl font-bold leading-tight">Qual dessas situações mais acontece com seu filho?</h2>
-          <p className="text-text-muted text-xs mt-1">Toque na situação e see o que fazer com mais calma, firmeza e menos estresse.</p>
-        </div>
-        <button onClick={onLogout} className="w-12 h-12 rounded-full bg-card flex items-center justify-center border border-white/10 shrink-0 hover:bg-white/5 transition-colors">
-          <User size={24} className="text-primary" />
-        </button>
+    <div className="space-y-8">
+      {/* TOPO - Limpo e com bom espaçamento */}
+      <div className="pt-2">
+        <h2 className="text-2xl font-bold leading-tight">Qual dessas situações mais acontece com seu filho?</h2>
+        <p className="text-text-muted text-sm mt-2 leading-relaxed">Toque na situação e veja o que fazer com mais calma, firmeza e menos estresse.</p>
       </div>
 
-      <div className="space-y-3">
-        <h4 className="text-[10px] font-bold uppercase tracking-widest text-text-muted">Escolha a situação</h4>
-        <p className="text-[10px] text-text-muted">See o que fazer, o que evitar e o que dizer.</p>
-        
-        <div className="grid grid-cols-2 gap-3">
-          {CRISIS_DATA.slice(0, 6).map(item => (
-            <Card key={item.id} onClick={() => setPage('crises')} className="flex flex-col gap-2 py-4">
-              <div className="w-10 h-10 rounded-full bg-red-500/10 flex items-center justify-center">
-                <Zap size={20} className="text-red-500" />
-              </div>
-              <h4 className="font-bold text-sm leading-tight">{item.label}</h4>
-              <p className="text-[9px] text-text-muted">See como agir</p>
-            </Card>
-          ))}
-          <Card onClick={() => setPage('recover-control')} className="flex flex-col gap-2 py-4 bg-orange-500/10 border-orange-500/20">
-            <div className="w-10 h-10 rounded-full bg-orange-500/20 flex items-center justify-center">
-              <Heart size={20} className="text-orange-500" />
-            </div>
-            <h4 className="font-bold text-sm leading-tight">Estou quase perdendo o controle</h4>
-            <p className="text-[9px] text-text-muted">Use antes de reagir</p>
-          </Card>
+      {/* BLOCO PRINCIPAL - Cards grandes e premium */}
+      <div className="space-y-4">
+        <div className="flex items-center justify-between">
+          <h3 className="text-xs font-bold uppercase tracking-wider text-primary">Escolha a situação</h3>
         </div>
-      </div>
-
-      <div className="space-y-3">
-        <h4 className="text-[10px] font-bold uppercase tracking-widest text-text-muted">Sistema Anti-Birra de 3 Etapas</h4>
-        <p className="text-[10px] text-text-muted">Um caminho simples para ajudar você a parar de improvisar e agir melhor nas birras do seu filho.</p>
         
-        <div className="space-y-2">
+        <div className="grid grid-cols-2 gap-4">
           {[
-            { id: 'interromper', title: 'Interromper o caos', subtitle: 'O que fazer para não piorar a situação' },
-            { id: 'responder', title: 'Responder com firmeza', subtitle: 'O que dizer e como agir sem gritar' },
-            { id: 'reduzir', title: 'Reduzir as próximas crises', subtitle: 'Treinos simples para diminuir as birras' }
-          ].map((etapa, i) => (
-            <Card key={etapa.id} onClick={() => {}} className="flex items-center gap-4 py-3">
-              <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-sm">
-                {i + 1}
+            { id: 'gritando', label: 'Ele está gritando', sub: 'Veja o que fazer' },
+            { id: 'chao', label: 'Ele se jogou no chão', sub: 'Saiba como agir' },
+            { id: 'enfrentando', label: 'Ele está me enfrentando', sub: 'Responda com firmeza' },
+            { id: 'nao-aceita', label: 'Ele não aceita "não"', sub: 'Mantenha o limite' },
+            { id: 'publico', label: 'Birra em público', sub: 'Sem agir por vergonha' },
+            { id: 'limite', label: 'Quase perdendo o controle', sub: 'Use antes de reagir', urgent: true }
+          ].map(item => (
+            <Card key={item.id} onClick={() => setPage('crises')} className={cn("flex flex-col justify-between min-h-[140px] py-5 px-4", item.urgent && "bg-gradient-to-br from-orange-500/15 to-orange-500/5 border-orange-500/30")}>
+              <div>
+                <div className={cn("w-12 h-12 rounded-2xl flex items-center justify-center mb-3", item.urgent ? "bg-orange-500/20" : "bg-red-500/15")}>
+                  <Zap size={24} className={item.urgent ? "text-orange-400" : "text-red-400"} />
+                </div>
+                <h4 className="font-bold text-base leading-tight">{item.label}</h4>
               </div>
-              <div className="flex-1">
-                <h4 className="font-bold text-sm">{etapa.title}</h4>
-                <p className="text-[9px] text-text-muted">{etapa.subtitle}</p>
-              </div>
-              <ChevronRight size={16} className="text-text-muted" />
+              <p className="text-xs text-text-muted">{item.sub}</p>
             </Card>
           ))}
         </div>
       </div>
 
-      <div className="space-y-2">
-        <Card onClick={() => setPage('phrases')} className="flex items-center gap-4 py-3 bg-green-500/5 border-green-500/10">
-          <div className="bg-green-500/20 p-2 rounded-full">
-            <Quote size={16} className="text-green-500" />
+      {/* BLOCO DO MÉTODO - Cards visuais empilhados */}
+      <div className="space-y-4">
+        <div>
+          <h3 className="text-xs font-bold uppercase tracking-wider text-secondary">Sistema Anti-Birra de 3 Etapas</h3>
+          <p className="text-xs text-text-muted mt-1">Um caminho simples para agir melhor nas birras.</p>
+        </div>
+        
+        <div className="space-y-3">
+          {[
+            { step: '1', title: 'Interromper o caos', desc: 'O que fazer para não piorar a situação' },
+            { step: '2', title: 'Responder com firmeza', desc: 'O que dizer e como agir sem gritar' },
+            { step: '3', title: 'Reduzir as próximas crises', desc: 'Treinos simples para diminuir as birras' }
+          ].map((etapa, i) => (
+            <Card key={i} onClick={() => {}} className="flex items-start gap-4 p-4 border-l-4 border-l-secondary">
+              <div className="w-10 h-10 rounded-xl bg-secondary/20 flex items-center justify-center shrink-0">
+                <span className="text-secondary font-bold text-lg">{etapa.step}</span>
+              </div>
+              <div className="flex-1 pt-1">
+                <h4 className="font-bold text-sm text-white">{etapa.title}</h4>
+                <p className="text-xs text-text-muted mt-0.5">{etapa.desc}</p>
+              </div>
+            </Card>
+          ))}
+        </div>
+      </div>
+
+      {/* BLOCO DE APOIOS RÁPIDOS - Cards compactos e secundários */}
+      <div className="space-y-3 pb-4">
+        <h3 className="text-xs font-bold uppercase tracking-wider text-text-muted">Apoios rápidos</h3>
+        
+        <Card onClick={() => setPage('phrases')} className="flex items-center gap-4 p-4 bg-green-500/8 border-green-500/20">
+          <div className="w-11 h-11 rounded-xl bg-green-500/15 flex items-center justify-center shrink-0">
+            <Quote size={20} className="text-green-400" />
           </div>
           <div className="flex-1">
-            <h4 className="font-bold text-sm">Frases para usar</h4>
-            <p className="text-[9px] text-text-muted">Saiba exatamente o que dizer sem gritar e sem ceder</p>
+            <h4 className="font-semibold text-sm text-white">Frases para usar</h4>
+            <p className="text-xs text-text-muted">O que dizer sem gritar e sem ceder</p>
           </div>
-          <ChevronRight size={16} className="text-text-muted" />
+          <ChevronRight size={18} className="text-text-muted" />
         </Card>
         
-        <Card onClick={() => setPage('recover-control')} className="flex items-center gap-4 py-3 bg-orange-500/5 border-orange-500/10">
-          <div className="bg-orange-500/20 p-2 rounded-full">
-            <Heart size={16} className="text-orange-500" />
+        <Card onClick={() => setPage('recover-control')} className="flex items-center gap-4 p-4 bg-orange-500/8 border-orange-500/20">
+          <div className="w-11 h-11 rounded-xl bg-orange-500/15 flex items-center justify-center shrink-0">
+            <Heart size={20} className="text-orange-400" />
           </div>
           <div className="flex-1">
-            <h4 className="font-bold text-sm">Recupere o controle</h4>
-            <p className="text-[9px] text-text-muted">Um apoio rápido para não reagir no impulso</p>
+            <h4 className="font-semibold text-sm text-white">Recupere o controle</h4>
+            <p className="text-xs text-text-muted">Antes de reagir no impulso</p>
           </div>
-          <ChevronRight size={16} className="text-text-muted" />
+          <ChevronRight size={18} className="text-text-muted" />
         </Card>
         
-        <Card onClick={() => setPage('prevent')} className="flex items-center gap-4 py-3 bg-primary/5 border-primary/10">
-          <div className="bg-primary/20 p-2 rounded-full">
-            <Target size={16} className="text-primary" />
+        <Card onClick={() => setPage('prevent')} className="flex items-center gap-4 p-4 bg-primary/8 border-primary/20">
+          <div className="w-11 h-11 rounded-xl bg-primary/15 flex items-center justify-center shrink-0">
+            <Target size={20} className="text-primary" />
           </div>
           <div className="flex-1">
-            <h4 className="font-bold text-sm">Reduza as próximas crises</h4>
-            <p className="text-[9px] text-text-muted">Treinos e ajustes simples para aplicar no dia a dia</p>
+            <h4 className="font-semibold text-sm text-white">Reduza as crises</h4>
+            <p className="text-xs text-text-muted">Treinos para o dia a dia</p>
           </div>
-          <ChevronRight size={16} className="text-text-muted" />
+          <ChevronRight size={18} className="text-text-muted" />
         </Card>
       </div>
     </div>
