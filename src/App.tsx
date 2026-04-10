@@ -29,7 +29,9 @@ import {
   Compass,
   AlertTriangle,
   XCircle,
-  Volume2
+  Volume2,
+  Heart,
+  AlertCircle
 } from 'lucide-react';
 import { cn } from './lib/utils';
 import { PageId, TabId, QuizAnswers, QuizContext, QuizTrigger, QuizReaction, QuizPain, QuizIntensity } from './types';
@@ -727,66 +729,61 @@ case 'act-now':
           <GenericPage title="Orientação" icon={Zap} onBack={() => setCurrentPage('crises')}>
             <div className="space-y-4">
               <Card className="border-l-4 border-l-red-500">
-                <h3 className="font-bold text-lg mb-4">{selectedCrisis.label}</h3>
+                <h3 className="font-bold text-lg mb-1">{selectedCrisis.label}</h3>
+                <p className="text-xs text-text-muted mb-4">See como agir sem piorar a situação.</p>
                 
-                <section className="mb-4">
-                  <h4 className="text-xs font-bold text-primary uppercase mb-2 flex items-center gap-1">
-                    <Brain size={14} /> O que isso significa
-                  </h4>
-                  <p className="text-sm text-text-muted">{selectedCrisis.meaning}</p>
-                </section>
-
-                <section className="mb-4">
+                <section className="mb-4 p-3 bg-green-500/10 rounded-xl border border-green-500/20">
                   <h4 className="text-xs font-bold text-green-500 uppercase mb-2 flex items-center gap-1">
                     <CheckCircle2 size={14} /> O que fazer agora
                   </h4>
-                  <ul className="space-y-2">
+                  <p className="text-[9px] text-text-muted mb-2">Siga estes passos com calma e firmeza.</p>
+                  <ul className="space-y-1">
                     {selectedCrisis.todo.map((t, i) => (
-                      <li key={i} className="text-sm text-text-muted flex gap-2">
-                        <span className="text-green-500">•</span> {t}
+                      <li key={i} className="text-xs text-text-muted flex gap-2">
+                        <span className="text-green-500 text-[10px] font-bold">{i + 1}.</span> {t}
                       </li>
                     ))}
                   </ul>
                 </section>
 
-                <section className="mb-4">
+                <section className="mb-4 p-3 bg-red-500/10 rounded-xl border border-red-500/20">
                   <h4 className="text-xs font-bold text-red-400 uppercase mb-2 flex items-center gap-1">
                     <XCircle size={14} /> O que evitar
                   </h4>
-                  <ul className="space-y-2">
+                  <p className="text-[9px] text-text-muted mb-2">Isso geralmente piora a situação.</p>
+                  <ul className="space-y-1">
                     {selectedCrisis.avoid.map((a, i) => (
-                      <li key={i} className="text-sm text-text-muted flex gap-2">
-                        <span className="text-red-400">•</span> {a}
+                      <li key={i} className="text-xs text-text-muted flex gap-2">
+                        <span className="text-red-400">×</span> {a}
                       </li>
                     ))}
                   </ul>
                 </section>
 
-                <section className="mb-6 p-3 bg-primary/5 rounded-xl border border-primary/10">
+                <section className="mb-4 p-3 bg-primary/10 rounded-xl border border-primary/20">
                   <h4 className="text-xs font-bold text-primary uppercase mb-2 flex items-center gap-1">
-                    <Quote size={14} /> Frase Pronta
+                    <Quote size={14} /> O que dizer
                   </h4>
-                  <p className="text-sm italic font-medium">"{selectedCrisis.phrase}"</p>
+                  <p className="text-[9px] text-text-muted mb-2">Use frases curtas, firmes e sem excesso de explicação.</p>
+                  <ul className="space-y-1">
+                    {selectedCrisis.phrase.split('. ').map((p, i) => (
+                      <li key={i} className="text-xs italic text-text-muted">"{p.trim()}"</li>
+                    ))}
+                  </ul>
                 </section>
+
+                <div className="mb-4 p-3 bg-card rounded-xl border border-white/5">
+                  <h4 className="text-xs font-bold text-text-muted uppercase mb-1">Como encerrar sem piorar</h4>
+                  <p className="text-xs text-text-muted">{selectedCrisis.meaning}</p>
+                </div>
+
+                <Button onClick={() => setCurrentPage('recover-control')} variant="secondary" className="py-3 mb-2">
+                  <AlertCircle size={18} /> Estou no limite
+                </Button>
 
                 <Button onClick={() => setCurrentPage('audios')} variant="outline" className="py-3">
                   <Volume2 size={18} /> Ouvir áudio de apoio
                 </Button>
-
-                {selectedCrisis.video && (
-                  <div className="mt-4 p-4 bg-card rounded-xl border border-white/5">
-                    <p className="text-[10px] text-text-muted mb-2">🎥 Entenda melhor essa situação</p>
-                    <p className="text-[9px] text-text-muted mb-3">Quando a crise chega nesse nível, é comum sentir que tudo saiu do controle. Mas na maioria das vezes, isso não começa ali. É um processo que foi se acumulando antes.</p>
-                    <div className="relative w-full h-[180px] rounded-lg overflow-hidden">
-                      <iframe
-                        className="absolute top-0 left-0 w-full h-full"
-                        src={`https://www.youtube.com/embed/${selectedCrisis.video}?rel=0&playsinline=1`}
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                      />
-                    </div>
-                  </div>
-                )}
               </Card>
             </div>
           </GenericPage>
@@ -874,22 +871,27 @@ case 'act-now':
         );
       case 'phrases':
         return (
-          <GenericPage title="Frases Prontas" icon={Quote} onBack={() => setCurrentPage('home')}>
+          <GenericPage title="Frases para usar" icon={Quote} onBack={() => setCurrentPage('now')}>
             <div className="space-y-4">
+              <p className="text-xs text-text-muted">Toque na situação e see exatamente o que dizer.</p>
+              
               {[
-                { cat: 'Birra', text: 'Eu entendo que você está bravo, mas não posso deixar você bater.', obs: 'Valide a emoção antes de colocar o limite.' },
-                { cat: 'Enfrentamento', text: 'Eu te ouvi. Agora, a regra é esta e não vamos mudar.', obs: 'Mantenha o tom de voz firme e baixo.' },
-                { cat: 'Insistência', text: 'Eu já respondi. Não vamos mais falar sobre isso agora.', obs: 'Evite entrar em looping de explicações.' },
-                { cat: 'Transição', text: 'Em 5 minutos vamos guardar os brinquedos.', obs: 'Dê tempo para o cérebro dele processar a mudança.' },
-                { cat: 'Limite', text: 'Isso não é uma escolha. É hora de ir.', obs: 'Seja clara sobre o que não é negociável.' }
-              ].map((item, i) => (
-                <Card key={i}>
-                  <div className="flex justify-between items-start mb-2">
-                    <span className="text-xs font-bold text-primary uppercase tracking-wider">{item.cat}</span>
-                    <button className="text-primary"><Volume2 size={18} /></button>
+                { cat: 'Quando ele grita', desc: 'Frases para diminuir confronto', frases: ['Eu vou falar com você quando você abaixar a voz.', 'Eu entendi que você está bravo, mas não vou mudar isso.'] },
+                { cat: 'Quando se joga no chão', desc: 'Frases para manter firmeza', frases: ['Eu estou aqui, mas não vou mudar isso.', 'Quando você se acalmar, eu te ajudo a levantar.'] },
+                { cat: 'Quando enfrenta você', desc: 'Frases para sustentar o limite', frases: ['Você pode ficar bravo, mas não vai falar assim comigo.', 'Eu não vou discutir. Eu vou manter o que foi dito.'] },
+                { cat: 'Quando não aceita "não"', desc: 'Frases curtas para manter a decisão', frases: ['Agora não.', 'Eu sei que você quer, mas a resposta continua sendo não.'] }
+              ].map((cat, i) => (
+                <Card key={i} onClick={() => {}}>
+                  <div className="flex justify-between items-center">
+                    <span className="text-xs font-bold text-primary uppercase tracking-wider">{cat.cat}</span>
+                    <ChevronRight size={14} className="text-text-muted" />
                   </div>
-                  <p className="font-medium italic mb-2">"{item.text}"</p>
-                  <p className="text-xs text-text-muted">{item.obs}</p>
+                  <p className="text-[9px] text-text-muted mt-1">{cat.desc}</p>
+                  <div className="mt-2 space-y-1">
+                    {cat.frases.slice(0, 2).map((f, j) => (
+                      <p key={j} className="text-xs italic text-text-muted">"{f}"</p>
+                    ))}
+                  </div>
                 </Card>
               ))}
             </div>
@@ -897,7 +899,7 @@ case 'act-now':
         );
       case 'audios':
         return (
-          <GenericPage title="Áudios Guiados" icon={Music} onBack={() => setCurrentPage('home')}>
+          <GenericPage title="Áudios de apoio" icon={Music} onBack={() => setCurrentPage('now')}>
             <div className="space-y-4">
               {AUDIOS_DATA.map(audio => (
                 <Card key={audio.id} onClick={() => playingAudio === audio.file ? stopAudio() : playAudio(audio.file)} className="flex items-center gap-4 cursor-pointer">
