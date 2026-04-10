@@ -390,7 +390,7 @@ const Home = ({ setPage, quizAnswers, onLogout }: { setPage: (p: PageId) => void
 
       {/* 2. BANNER HERO PRINCIPAL */}
       <Card onClick={() => setPage('crises')} className="relative overflow-hidden h-[180px] border-none p-0 cursor-pointer group">
-        <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=600&h=300&fit=crop&q=80" alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+        <img src="https://res.cloudinary.com/dynjqdxw8/image/upload/v1775864200/Banner_ap_kx9kgv.webp" alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/5" />
         <div className="absolute bottom-0 left-0 right-0 p-5">
           <h2 className="text-xl font-bold text-white leading-tight">Seu filho faz birra e você não sabe o que fazer?</h2>
