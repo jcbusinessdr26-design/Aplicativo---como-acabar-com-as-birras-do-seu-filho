@@ -621,7 +621,7 @@ const SITUATIONS_DATA = [
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<PageId>('login');
-  const [activeTab, setActiveTab] = useState<TabId>('home');
+  const [activeTab, setActiveTab] = useState<TabId>('now');
   const [selectedCrisis, setSelectedCrisis] = useState<typeof CRISIS_DATA[0] | null>(null);
   const [selectedSituation, setSelectedSituation] = useState<typeof SITUATIONS_DATA[0] | null>(null);
   const [quizAnswers, setQuizAnswers] = useState<QuizAnswers | null>(null);
@@ -633,7 +633,7 @@ export default function App() {
     const session = localStorage.getItem('anti_birra_session');
     if (session === 'true') {
       setIsLoggedIn(true);
-      setCurrentPage('home');
+      setCurrentPage('now');
     } else {
       setCurrentPage('login');
     }
@@ -650,7 +650,7 @@ export default function App() {
       if (isAuthorized) {
         setIsLoggedIn(true);
         localStorage.setItem('anti_birra_session', 'true');
-        setCurrentPage('home');
+        setCurrentPage('now');
       } else {
         setCurrentPage('login-error');
       }
@@ -683,11 +683,11 @@ export default function App() {
 
   const handleTabChange = (tab: TabId) => {
     setActiveTab(tab);
-    if (tab === 'home') setCurrentPage('home');
-    if (tab === 'act-now') setCurrentPage('act-now');
-    if (tab === 'situations') setCurrentPage('situations');
+    if (tab === 'now') setCurrentPage('now');
+    if (tab === 'crises') setCurrentPage('crises');
+    if (tab === 'phrases') setCurrentPage('phrases');
     if (tab === 'audios') setCurrentPage('audios');
-    if (tab === 'plan') setCurrentPage('plan');
+    if (tab === 'prevent') setCurrentPage('prevent');
   };
 
   const renderContent = () => {
@@ -703,16 +703,18 @@ export default function App() {
       case 'login-error':
         return <LoginError onRetry={() => setCurrentPage('login')} />;
       case 'home':
+      case 'now':
         return <Home setPage={setCurrentPage} quizAnswers={quizAnswers} onLogout={handleLogout} />;
       case 'quiz':
-        return <Quiz onComplete={(answers) => { setQuizAnswers(answers); setCurrentPage('home'); }} />;
+        return <Quiz onComplete={(answers) => { setQuizAnswers(answers); setCurrentPage('now'); }} />;
       case 'act-now':
+      case 'crises':
         return (
-          <GenericPage title="Agir Agora" icon={Zap} onBack={() => setCurrentPage('home')}>
+          <GenericPage title="Crises" icon={Zap} onBack={() => setCurrentPage('now')}>
             <div className="space-y-4">
               <div className="bg-red-500/10 p-4 rounded-xl border border-red-500/20">
-                <h3 className="font-bold text-sm mb-1">Seu filho está em crise agora?</h3>
-                <p className="text-[10px] text-text-muted">Veja como agir sem piorar a situação.</p>
+                <h3 className="font-bold text-sm mb-1">Escolha a situação</h3>
+                <p className="text-[10px] text-text-muted">Toque na situação e veja o que fazer.</p>
               </div>
               {CRISIS_DATA.map(item => (
                 <Card key={item.id} onClick={() => { setSelectedCrisis(item); setCurrentPage('crisis-detail'); }} className="flex items-center gap-4">
@@ -728,7 +730,7 @@ export default function App() {
         );
       case 'crisis-detail':
         return selectedCrisis && (
-          <GenericPage title="Orientação" icon={Zap} onBack={() => setCurrentPage('act-now')}>
+          <GenericPage title="Orientação" icon={Zap} onBack={() => setCurrentPage('crises')}>
             <div className="space-y-4">
               <Card className="border-l-4 border-l-red-500">
                 <h3 className="font-bold text-lg mb-4">{selectedCrisis.label}</h3>
@@ -1117,11 +1119,11 @@ export default function App() {
 
       {/* Bottom Nav */}
       <nav className="fixed bottom-0 left-0 right-0 bg-card/80 backdrop-blur-lg border-t border-white/5 px-6 py-3 z-50 flex justify-between items-center max-w-md mx-auto">
-        <NavItem icon={HomeIcon} label="Início" active={activeTab === 'home'} onClick={() => handleTabChange('home')} />
-        <NavItem icon={Zap} label="Agir Agora" active={activeTab === 'act-now'} onClick={() => handleTabChange('act-now')} />
-        <NavItem icon={MessageSquare} label="Situações" active={activeTab === 'situations'} onClick={() => handleTabChange('situations')} />
+        <NavItem icon={HomeIcon} label="Agora" active={activeTab === 'now'} onClick={() => handleTabChange('now')} />
+        <NavItem icon={Zap} label="Crises" active={activeTab === 'crises'} onClick={() => handleTabChange('crises')} />
+        <NavItem icon={MessageSquare} label="Frases" active={activeTab === 'phrases'} onClick={() => handleTabChange('phrases')} />
         <NavItem icon={Music} label="Áudios" active={activeTab === 'audios'} onClick={() => handleTabChange('audios')} />
-        <NavItem icon={Calendar} label="Plano" active={activeTab === 'plan'} onClick={() => handleTabChange('plan')} />
+        <NavItem icon={Calendar} label="Prevenir" active={activeTab === 'prevent'} onClick={() => handleTabChange('prevent')} />
       </nav>
     </div>
   );
