@@ -377,104 +377,98 @@ const Home = ({ setPage, quizAnswers, onLogout }: { setPage: (p: PageId) => void
   
   return (
     <div className="space-y-6">
-      <img 
-        src="https://res.cloudinary.com/dbwe8j1uq/image/upload/v1775495277/ChatGPT_Image_6_de_abr._de_2026_13_54_37_km51kx.webp" 
-        alt="" 
-        className="w-full h-auto rounded-xl object-cover"
-        referrerPolicy="no-referrer"
-      />
-      
       <div className="flex items-center justify-between">
         <div className="flex-1 pr-4">
-          <h2 className="text-xl font-bold leading-tight">{content.headline}</h2>
-          <p className="text-text-muted text-xs mt-1">{content.subheadline}</p>
+          <h2 className="text-xl font-bold leading-tight">Qual dessas situações mais acontece com seu filho?</h2>
+          <p className="text-text-muted text-xs mt-1">Toque na situação e see o que fazer com mais calma, firmeza e menos estresse.</p>
         </div>
         <button onClick={onLogout} className="w-12 h-12 rounded-full bg-card flex items-center justify-center border border-white/10 shrink-0 hover:bg-white/5 transition-colors">
           <User size={24} className="text-primary" />
         </button>
       </div>
 
-      {/* Support and Urgency Messages */}
-      <div className="bg-primary/5 p-4 rounded-2xl border border-primary/10 space-y-1">
-        <p className="text-sm text-primary font-semibold">{content.supportMessage}</p>
-        <p className="text-[11px] text-text-muted italic">{content.urgencyText}</p>
+      <div className="space-y-3">
+        <h4 className="text-[10px] font-bold uppercase tracking-widest text-text-muted">Escolha a situação</h4>
+        <p className="text-[10px] text-text-muted">See o que fazer, o que evitar e o que dizer.</p>
+        
+        <div className="grid grid-cols-2 gap-3">
+          {[
+            { id: 'gritando', title: 'Ele está gritando', subtitle: 'See como agir sem gritar de volta' },
+            { id: 'chao', title: 'Ele se jogou no chão', subtitle: 'Saiba como agir sem piorar a crise' },
+            { id: 'enfrentando', title: 'Ele está me enfrentando', subtitle: 'Responda com firmeza sem entrar em confronto' },
+            { id: 'nao-aceita', title: 'Ele não aceita "não"', subtitle: 'Aprenda a manter o limite sem ceder' },
+            { id: 'publico', title: 'Birra em público', subtitle: 'Saiba o que fazer sem agir por vergonha' },
+            { id: 'limite', title: 'Estou quase perdendo o controle', subtitle: 'Use isso antes de reagir no impulso', isUrgente: true }
+          ].map(item => (
+            <Card key={item.id} onClick={() => { setSelectedCrisis(CRISIS_DATA.find(c => c.id === item.id) || null); setCurrentPage('crisis-detail'); }} className={cn("flex flex-col gap-2 py-4", item.isUrgente && "bg-orange-500/10 border-orange-500/20")}>
+              <div className={cn("w-10 h-10 rounded-full flex items-center justify-center", item.isUrgente ? "bg-orange-500/20" : "bg-red-500/10")}>
+                <Zap size={20} className={item.isUrgente ? "text-orange-500" : "text-red-500"} />
+              </div>
+              <h4 className="font-bold text-sm leading-tight">{item.title}</h4>
+              <p className="text-[9px] text-text-muted">{item.subtitle}</p>
+            </Card>
+          ))}
+        </div>
       </div>
 
-      {/* Main Crisis Card */}
-      <Card onClick={() => setPage('act-now')} className="bg-gradient-to-br from-red-500/20 to-orange-500/20 border-red-500/20 relative overflow-hidden">
-        <div className="absolute -right-4 -top-4 opacity-10">
-          <Zap size={100} />
+      <div className="space-y-3">
+        <h4 className="text-[10px] font-bold uppercase tracking-widest text-text-muted">Sistema Anti-Birra de 3 Etapas</h4>
+        <p className="text-[10px] text-text-muted">Um caminho simples para ajudar você a parar de improvisar e agir melhor nas birras do seu filho.</p>
+        
+        <div className="space-y-2">
+          {[
+            { id: 'interromper', title: 'Interromper o caos', subtitle: 'O que fazer para não piorar a situação' },
+            { id: 'responder', title: 'Responder com firmeza', subtitle: 'O que dizer e como agir sem gritar' },
+            { id: 'reduzir', title: 'Reduzir as próximas crises', subtitle: 'Treinos simples para diminuir as birras' }
+          ].map((etapa, i) => (
+            <Card key={etapa.id} onClick={() => {}} className="flex items-center gap-4 py-3">
+              <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-sm">
+                {i + 1}
+              </div>
+              <div className="flex-1">
+                <h4 className="font-bold text-sm">{etapa.title}</h4>
+                <p className="text-[9px] text-text-muted">{etapa.subtitle}</p>
+              </div>
+              <ChevronRight size={16} className="text-text-muted" />
+            </Card>
+          ))}
         </div>
-        <div className="flex items-center gap-4 relative z-10">
-          <div className="bg-red-500/20 p-3 rounded-xl">
-            <Zap className="text-red-500" />
+      </div>
+
+      <div className="space-y-2">
+        <Card onClick={() => setPage('phrases')} className="flex items-center gap-4 py-3 bg-green-500/5 border-green-500/10">
+          <div className="bg-green-500/20 p-2 rounded-full">
+            <Quote size={16} className="text-green-500" />
           </div>
           <div className="flex-1">
-            <h3 className="font-bold text-lg leading-tight">{content.mainCardTitle}</h3>
-            <p className="text-xs text-text-muted mt-1">Se seu filho está em crise, comece por aqui</p>
+            <h4 className="font-bold text-sm">Frases para usar</h4>
+            <p className="text-[9px] text-text-muted">Saiba exatamente o que dizer sem gritar e sem ceder</p>
           </div>
-        </div>
-        <Button variant="primary" onClick={() => setPage('act-now')} className="mt-4 py-2 bg-red-500 hover:bg-red-600 relative z-10 text-sm">
-          Ver orientação rápida
-        </Button>
-      </Card>
-
-      {/* Recommended Section */}
-      <div className="space-y-3">
-        <h4 className="text-[10px] font-bold uppercase tracking-widest text-text-muted">Recomendações para você</h4>
-        <div className="grid grid-cols-1 gap-3">
-          <Card onClick={() => setPage('audios')} className="flex items-center gap-4 py-3 bg-purple-500/5 border-purple-500/10">
-            <div className="bg-purple-500/20 p-2 rounded-full">
-              <Play size={16} className="text-purple-500 fill-purple-500" />
-            </div>
-            <div className="flex-1">
-              <p className="text-[9px] text-purple-400 uppercase font-bold tracking-wider">Áudio Recomendado</p>
-              <p className="text-sm font-bold">{content.recommendedAudio}</p>
-            </div>
-            <ChevronRight size={16} className="text-text-muted" />
-          </Card>
-          <Card onClick={() => setPage('exercises')} className="flex items-center gap-4 py-3 bg-orange-500/5 border-orange-500/10">
-            <div className="bg-orange-500/20 p-2 rounded-full">
-              <Target size={16} className="text-orange-500" />
-            </div>
-            <div className="flex-1">
-              <p className="text-[9px] text-orange-400 uppercase font-bold tracking-wider">Exercício Recomendado</p>
-              <p className="text-sm font-bold">{content.recommendedExercise}</p>
-            </div>
-            <ChevronRight size={16} className="text-text-muted" />
-          </Card>
-        </div>
-      </div>
-
-      {/* Secondary Grid */}
-      <div className="grid grid-cols-2 gap-4">
-        <Card onClick={() => setPage('situations')} className="flex flex-col gap-3">
-          <div className="bg-blue-500/10 w-fit p-2 rounded-lg">
-            <MessageSquare size={20} className="text-blue-500" />
-          </div>
-          <h4 className="font-bold text-sm">Situações</h4>
-          <p className="text-[10px] text-text-muted">Dia a dia real</p>
+          <ChevronRight size={16} className="text-text-muted" />
         </Card>
-        <Card onClick={() => setPage('phrases')} className="flex flex-col gap-3">
-          <div className="bg-green-500/10 w-fit p-2 rounded-lg">
-            <Quote size={20} className="text-green-500" />
+        
+        <Card onClick={() => setPage('recover-control')} className="flex items-center gap-4 py-3 bg-orange-500/5 border-orange-500/10">
+          <div className="bg-orange-500/20 p-2 rounded-full">
+            <Heart size={16} className="text-orange-500" />
           </div>
-          <h4 className="font-bold text-sm">Frases prontas</h4>
-          <p className="text-[10px] text-text-muted">O que dizer</p>
+          <div className="flex-1">
+            <h4 className="font-bold text-sm">Recupere o controle</h4>
+            <p className="text-[9px] text-text-muted">Um apoio rápido para não reagir no impulso</p>
+          </div>
+          <ChevronRight size={16} className="text-text-muted" />
+        </Card>
+        
+        <Card onClick={() => setPage('prevent')} className="flex items-center gap-4 py-3 bg-primary/5 border-primary/10">
+          <div className="bg-primary/20 p-2 rounded-full">
+            <Target size={16} className="text-primary" />
+          </div>
+          <div className="flex-1">
+            <h4 className="font-bold text-sm">Reduza as próximas crises</h4>
+            <p className="text-[9px] text-text-muted">Treinos e ajustes simples para aplicar no dia a dia</p>
+          </div>
+          <ChevronRight size={16} className="text-text-muted" />
         </Card>
       </div>
-
-      {/* Plan Card */}
-      <Card onClick={() => setPage('plan')} className="flex items-center gap-4 bg-primary/5 border-primary/10">
-        <div className="bg-primary/20 p-3 rounded-xl">
-          <Calendar className="text-primary" />
-        </div>
-        <div>
-          <h3 className="font-bold text-sm">Plano de 7 dias</h3>
-          <p className="text-[10px] text-text-muted">Sua jornada de mudança</p>
-        </div>
-        <ChevronRight className="ml-auto text-text-muted" size={18} />
-      </Card>
     </div>
   );
 };
@@ -707,14 +701,14 @@ export default function App() {
         return <Home setPage={setCurrentPage} quizAnswers={quizAnswers} onLogout={handleLogout} />;
       case 'quiz':
         return <Quiz onComplete={(answers) => { setQuizAnswers(answers); setCurrentPage('now'); }} />;
-      case 'act-now':
+case 'act-now':
       case 'crises':
         return (
           <GenericPage title="Crises" icon={Zap} onBack={() => setCurrentPage('now')}>
             <div className="space-y-4">
               <div className="bg-red-500/10 p-4 rounded-xl border border-red-500/20">
                 <h3 className="font-bold text-sm mb-1">Escolha a situação</h3>
-                <p className="text-[10px] text-text-muted">Toque na situação e veja o que fazer.</p>
+                <p className="text-[10px] text-text-muted">See o que fazer, o que evitar e o que dizer.</p>
               </div>
               {CRISIS_DATA.map(item => (
                 <Card key={item.id} onClick={() => { setSelectedCrisis(item); setCurrentPage('crisis-detail'); }} className="flex items-center gap-4">
