@@ -394,22 +394,22 @@ const Home = ({ setPage, quizAnswers, onLogout }: { setPage: (p: PageId) => void
         <p className="text-[10px] text-text-muted">See o que fazer, o que evitar e o que dizer.</p>
         
         <div className="grid grid-cols-2 gap-3">
-          {[
-            { id: 'gritando', title: 'Ele está gritando', subtitle: 'See como agir sem gritar de volta' },
-            { id: 'chao', title: 'Ele se jogou no chão', subtitle: 'Saiba como agir sem piorar a crise' },
-            { id: 'enfrentando', title: 'Ele está me enfrentando', subtitle: 'Responda com firmeza sem entrar em confronto' },
-            { id: 'nao-aceita', title: 'Ele não aceita "não"', subtitle: 'Aprenda a manter o limite sem ceder' },
-            { id: 'publico', title: 'Birra em público', subtitle: 'Saiba o que fazer sem agir por vergonha' },
-            { id: 'limite', title: 'Estou quase perdendo o controle', subtitle: 'Use isso antes de reagir no impulso', isUrgente: true }
-          ].map(item => (
-            <Card key={item.id} onClick={() => { setSelectedCrisis(CRISIS_DATA.find(c => c.id === item.id) || null); setCurrentPage('crisis-detail'); }} className={cn("flex flex-col gap-2 py-4", item.isUrgente && "bg-orange-500/10 border-orange-500/20")}>
-              <div className={cn("w-10 h-10 rounded-full flex items-center justify-center", item.isUrgente ? "bg-orange-500/20" : "bg-red-500/10")}>
-                <Zap size={20} className={item.isUrgente ? "text-orange-500" : "text-red-500"} />
+          {CRISIS_DATA.slice(0, 6).map(item => (
+            <Card key={item.id} onClick={() => setPage('crises')} className="flex flex-col gap-2 py-4">
+              <div className="w-10 h-10 rounded-full bg-red-500/10 flex items-center justify-center">
+                <Zap size={20} className="text-red-500" />
               </div>
-              <h4 className="font-bold text-sm leading-tight">{item.title}</h4>
-              <p className="text-[9px] text-text-muted">{item.subtitle}</p>
+              <h4 className="font-bold text-sm leading-tight">{item.label}</h4>
+              <p className="text-[9px] text-text-muted">See como agir</p>
             </Card>
           ))}
+          <Card onClick={() => setPage('recover-control')} className="flex flex-col gap-2 py-4 bg-orange-500/10 border-orange-500/20">
+            <div className="w-10 h-10 rounded-full bg-orange-500/20 flex items-center justify-center">
+              <Heart size={20} className="text-orange-500" />
+            </div>
+            <h4 className="font-bold text-sm leading-tight">Estou quase perdendo o controle</h4>
+            <p className="text-[9px] text-text-muted">Use antes de reagir</p>
+          </Card>
         </div>
       </div>
 
@@ -703,7 +703,7 @@ export default function App() {
         return <Home setPage={setCurrentPage} quizAnswers={quizAnswers} onLogout={handleLogout} />;
       case 'quiz':
         return <Quiz onComplete={(answers) => { setQuizAnswers(answers); setCurrentPage('now'); }} />;
-case 'act-now':
+      case 'act-now':
       case 'crises':
         return (
           <GenericPage title="Crises" icon={Zap} onBack={() => setCurrentPage('now')}>
@@ -975,12 +975,13 @@ case 'act-now':
           </GenericPage>
         );
       case 'plan':
+      case 'prevent':
         return (
-          <GenericPage title="Plano de 7 Dias" icon={Calendar} onBack={() => setCurrentPage('home')}>
+          <GenericPage title="Reduza as próximas crises" icon={Calendar} onBack={() => setCurrentPage('now')}>
             <div className="space-y-6">
               <Card className="bg-primary/10 border-primary/20">
-                <h3 className="font-bold text-sm mb-1">Plano de 7 Dias para Reduzir Birras</h3>
-                <p className="text-[10px] text-text-muted">Siga um passo por dia para agir com mais firmeza e menos estresse.</p>
+                <h3 className="font-bold text-sm mb-1">Treinos principais</h3>
+                <p className="text-[10px] text-text-muted">Escolha por onde começar.</p>
               </Card>
               
               <div className="space-y-4">
