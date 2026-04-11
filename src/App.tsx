@@ -756,67 +756,114 @@ export default function App() {
         );
       case 'crisis-detail':
         return selectedCrisis && (
-          <GenericPage title="Orientação" icon={Zap} onBack={() => setCurrentPage('crises')}>
-            <div className="space-y-4">
-              <Card className="border-l-4 border-l-red-500">
-                <h3 className="font-bold text-lg mb-1">{selectedCrisis.label}</h3>
-                <p className="text-xs text-text-muted mb-4">See como agir sem piorar a situação.</p>
-                
-                <section className="mb-4 p-3 bg-green-500/10 rounded-xl border border-green-500/20">
-                  <h4 className="text-xs font-bold text-green-500 uppercase mb-2 flex items-center gap-1">
-                    <CheckCircle2 size={14} /> O que fazer agora
-                  </h4>
-                  <p className="text-[9px] text-text-muted mb-2">Siga estes passos com calma e firmeza.</p>
-                  <ul className="space-y-1">
-                    {selectedCrisis.todo.map((t, i) => (
-                      <li key={i} className="text-xs text-text-muted flex gap-2">
-                        <span className="text-green-500 text-[10px] font-bold">{i + 1}.</span> {t}
-                      </li>
-                    ))}
-                  </ul>
-                </section>
+          <div className="space-y-5 pb-8">
+            {/* Banner da crise no topo */}
+            <Card className="relative overflow-hidden h-[160px] border-none p-0">
+              <img src="https://res.cloudinary.com/dynjqdxw8/image/upload/v1775899714/Ele_est%C3%A1_gritando_1_gy4czo.png" alt="" className="absolute inset-0 w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-5">
+                <h2 className="text-xl font-bold text-white leading-tight">Ele está gritando</h2>
+                <p className="text-white/80 text-sm mt-1">See o que fazer sem perder o controle.</p>
+              </div>
+            </Card>
 
-                <section className="mb-4 p-3 bg-red-500/10 rounded-xl border border-red-500/20">
-                  <h4 className="text-xs font-bold text-red-400 uppercase mb-2 flex items-center gap-1">
-                    <XCircle size={14} /> O que evitar
-                  </h4>
-                  <p className="text-[9px] text-text-muted mb-2">Isso geralmente piora a situação.</p>
-                  <ul className="space-y-1">
-                    {selectedCrisis.avoid.map((a, i) => (
-                      <li key={i} className="text-xs text-text-muted flex gap-2">
-                        <span className="text-red-400">×</span> {a}
-                      </li>
-                    ))}
-                  </ul>
-                </section>
-
-                <section className="mb-4 p-3 bg-primary/10 rounded-xl border border-primary/20">
-                  <h4 className="text-xs font-bold text-primary uppercase mb-2 flex items-center gap-1">
-                    <Quote size={14} /> O que dizer
-                  </h4>
-                  <p className="text-[9px] text-text-muted mb-2">Use frases curtas, firmes e sem excesso de explicação.</p>
-                  <ul className="space-y-1">
-                    {selectedCrisis.phrase.split('. ').map((p, i) => (
-                      <li key={i} className="text-xs italic text-text-muted">"{p.trim()}"</li>
-                    ))}
-                  </ul>
-                </section>
-
-                <div className="mb-4 p-3 bg-card rounded-xl border border-white/5">
-                  <h4 className="text-xs font-bold text-text-muted uppercase mb-1">Como encerrar sem piorar</h4>
-                  <p className="text-xs text-text-muted">{selectedCrisis.meaning}</p>
-                </div>
-
-                <Button onClick={() => setCurrentPage('recover-control')} variant="secondary" className="py-3 mb-2">
-                  <AlertCircle size={18} /> Estou no limite
-                </Button>
-
-                <Button onClick={() => setCurrentPage('audios')} variant="outline" className="py-3">
-                  <Volume2 size={18} /> Ouvir áudio de apoio
-                </Button>
-              </Card>
+            {/* Introdução */}
+            <div className="px-1">
+              <h3 className="text-sm font-bold text-white mb-1">O que fazer nessa situação</h3>
+              <p className="text-xs text-white/70">Siga estes passos com calma e firmeza para não piorar a situação.</p>
             </div>
-          </GenericPage>
+
+            {/* O que fazer agora - Verde */}
+            <Card className="p-4 bg-green-600/20 border-green-500/30">
+              <div className="flex items-center gap-2 mb-3">
+                <CheckCircle2 size={18} className="text-green-400" />
+                <h4 className="font-bold text-white">O que fazer agora</h4>
+              </div>
+              <ol className="space-y-2">
+                {selectedCrisis.todo.map((t, i) => (
+                  <li key={i} className="text-sm text-white/90 flex gap-2">
+                    <span className="text-green-400 font-bold min-w-[20px]">{i + 1}.</span> {t}
+                  </li>
+                ))}
+              </ol>
+            </Card>
+
+            {/* O que evitar - Vinho/Ameixa */}
+            <Card className="p-4 bg-red-900/30 border-red-800/30">
+              <div className="flex items-center gap-2 mb-3">
+                <XCircle size={18} className="text-red-400" />
+                <h4 className="font-bold text-white">O que evitar</h4>
+              </div>
+              <ul className="space-y-2">
+                {selectedCrisis.avoid.map((a, i) => (
+                  <li key={i} className="text-sm text-white/90 flex gap-2">
+                    <span className="text-red-400">×</span> {a}
+                  </li>
+                ))}
+              </ul>
+            </Card>
+
+            {/* O que dizer - Azul */}
+            <Card className="p-4 bg-blue-600/20 border-blue-500/30">
+              <div className="flex items-center gap-2 mb-3">
+                <Quote size={18} className="text-blue-400" />
+                <h4 className="font-bold text-white">O que dizer</h4>
+              </div>
+              <p className="text-xs text-white/70 mb-3">Use frases curtas, firmes e sem excesso de explicação.</p>
+              <ul className="space-y-2">
+                {selectedCrisis.phrase.split('. ').map((p, i) => (
+                  <li key={i} className="text-sm italic text-white/90">"{p.trim()}"</li>
+                ))}
+              </ul>
+            </Card>
+
+            {/* Como encerrar */}
+            <Card className="p-4 bg-card border-white/10">
+              <h4 className="font-bold text-white mb-2">Como encerrar sem piorar</h4>
+              <p className="text-sm text-white/80">{selectedCrisis.meaning}</p>
+            </Card>
+
+            {/* Botão Estou no limite */}
+            <Button onClick={() => setCurrentPage('recover-control')} className="w-full py-4 text-base font-semibold">
+              <AlertCircle size={20} /> Estou no limite
+            </Button>
+
+            {/* Vídeos complementares */}
+            {selectedCrisis.video && (
+              <div className="space-y-3 pt-2">
+                <div className="px-1">
+                  <h3 className="text-sm font-bold text-white">Vídeos complementares</h3>
+                  <p className="text-xs text-white/60">Assista para entender melhor como aplicar isso na prática.</p>
+                </div>
+                <Card className="p-0 overflow-hidden">
+                  <div className="relative h-[140px] bg-black/50">
+                    <img src="https://img.youtube.com/vi/avLfgKBPf8o/maxresdefault.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                      <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur flex items-center justify-center">
+                        <Play size={28} className="text-white fill-white" />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-4">
+                    <h4 className="font-semibold text-white text-sm">Entenda melhor essa situação</h4>
+                    <p className="text-xs text-white/60 mt-1">Quando a crise chega nesse nível, é comum sentir que tudo saiu do controle.</p>
+                  </div>
+                </Card>
+              </div>
+            )}
+
+            {/* Sugestão de outras crises */}
+            <div className="pt-2">
+              <h3 className="text-xs font-medium text-white/60 mb-3">Outras situações</h3>
+              <div className="grid grid-cols-2 gap-2">
+                {CRISIS_DATA.filter(c => c.id !== selectedCrisis.id).slice(0, 2).map(crisis => (
+                  <Card key={crisis.id} onClick={() => { setSelectedCrisis(crisis); }} className="p-3 bg-card/50 border-white/5">
+                    <span className="text-sm text-white/80">{crisis.label}</span>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </div>
         );
       case 'situations':
         return (
