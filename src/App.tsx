@@ -757,15 +757,16 @@ export default function App() {
       case 'crisis-detail':
         return selectedCrisis && (
           <div className="space-y-5 pb-8">
-            {/* Banner da crise no topo */}
-            <Card className="relative overflow-hidden h-[160px] border-none p-0">
+            {/* Banner limpo - apenas imagem */}
+            <Card className="relative overflow-hidden h-[180px] border-none p-0">
               <img src="https://res.cloudinary.com/dynjqdxw8/image/upload/v1775899714/Ele_est%C3%A1_gritando_1_gy4czo.png" alt="" className="absolute inset-0 w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-5">
-                <h2 className="text-xl font-bold text-white leading-tight">Ele está gritando</h2>
-                <p className="text-white/80 text-sm mt-1">See o que fazer sem perder o controle.</p>
-              </div>
             </Card>
+
+            {/* Texto do banner - fora da imagem */}
+            <div className="px-1 -mt-2">
+              <h2 className="text-xl font-bold text-white leading-tight">Ele está gritando</h2>
+              <p className="text-white/80 text-sm mt-1">See o que fazer sem perder o controle.</p>
+            </div>
 
             {/* Introdução */}
             <div className="px-1">
