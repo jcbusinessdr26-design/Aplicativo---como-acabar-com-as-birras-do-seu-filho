@@ -390,7 +390,7 @@ const Home = ({ setPage, quizAnswers, onLogout }: { setPage: (p: PageId) => void
 
       {/* 2. BANNER HERO PRINCIPAL */}
       <Card onClick={() => setPage('crises')} className="relative overflow-hidden h-[180px] border-none p-0 cursor-pointer group">
-        <img src="https://res.cloudinary.com/dynjqdxw8/image/upload/v1775864200/Banner_ap_kx9kgv.webp" alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+        <img src="https://res.cloudinary.com/dynjqdxw8/image/upload/v1775899715/seu_filho_faz_birra_-_Banner_1_1_wllwux.png" alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/5" />
         <div className="absolute bottom-0 left-0 right-0 p-5">
           <h2 className="text-xl font-bold text-white leading-tight">Seu filho faz birra e você não sabe o que fazer?</h2>
@@ -412,7 +412,7 @@ const Home = ({ setPage, quizAnswers, onLogout }: { setPage: (p: PageId) => void
       <div className="grid grid-cols-2 gap-3">
         {/* Mini-banner 1: Ele está gritando */}
         <Card onClick={() => setPage('crises')} className="relative overflow-hidden h-[120px] border-none p-0 cursor-pointer group">
-          <img src="https://images.unsplash.com/photo-1606092195730-5c9693e97d95?w=300&h=160&fit=crop&q=80" alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+          <img src="https://res.cloudinary.com/dynjqdxw8/image/upload/v1775899714/Ele_est%C3%A1_gritando_1_gy4czo.png" alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10" />
           <div className="absolute inset-0 p-3 flex flex-col justify-between">
             <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center self-start">
@@ -430,7 +430,7 @@ const Home = ({ setPage, quizAnswers, onLogout }: { setPage: (p: PageId) => void
 
         {/* Mini-banner 2: Ele se jogou no chão */}
         <Card onClick={() => setPage('crises')} className="relative overflow-hidden h-[120px] border-none p-0 cursor-pointer group">
-          <img src="https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=300&h=160&fit=crop&q=80" alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+          <img src="https://res.cloudinary.com/dynjqdxw8/image/upload/v1775899711/Ele_se_joga_no_ch%C3%A3o_1_eiavjx.png" alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10" />
           <div className="absolute inset-0 p-3 flex flex-col justify-between">
             <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center self-start">
@@ -448,7 +448,7 @@ const Home = ({ setPage, quizAnswers, onLogout }: { setPage: (p: PageId) => void
 
         {/* Mini-banner 3: Ele não aceita "não" */}
         <Card onClick={() => setPage('crises')} className="relative overflow-hidden h-[120px] border-none p-0 cursor-pointer group">
-          <img src="https://images.unsplash.com/photo-1506126611408-ee5fc9085d9c?w=300&h=160&fit=crop&q=80" alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+          <img src="https://res.cloudinary.com/dynjqdxw8/image/upload/v1775899709/Ele_n%C3%A3o_aceita_n%C3%A3o_evwvtu.webp" alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10" />
           <div className="absolute inset-0 p-3 flex flex-col justify-between">
             <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center self-start">
@@ -466,7 +466,7 @@ const Home = ({ setPage, quizAnswers, onLogout }: { setPage: (p: PageId) => void
 
         {/* Mini-banner 4: Quase perdendo o controle */}
         <Card onClick={() => setPage('recover-control')} className="relative overflow-hidden h-[120px] border-orange-500/40 p-0 cursor-pointer group">
-          <img src="https://images.unsplash.com/photo-1506126611408-ee5fc9085d9c?w=300&h=160&fit=crop&q=80" alt="" className="absolute inset-0 w-full h-full object-cover opacity-70" />
+          <img src="https://res.cloudinary.com/dynjqdxw8/image/upload/v1775899709/Ele_n%C3%A3o_aceita_n%C3%A3o_evwvtu.webp" alt="" className="absolute inset-0 w-full h-full object-cover opacity-70" />
           <div className="absolute inset-0 bg-gradient-to-t from-orange-900/80 via-orange-900/40 to-orange-900/20" />
           <div className="absolute inset-0 p-3 flex flex-col justify-between">
             <div className="w-8 h-8 rounded-full bg-orange-500/40 flex items-center justify-center self-start">
@@ -492,7 +492,7 @@ const Home = ({ setPage, quizAnswers, onLogout }: { setPage: (p: PageId) => void
       <div className="grid grid-cols-2 gap-3">
         {/* Mini-banner 5: Ele está me enfrentamento */}
         <Card onClick={() => setPage('crises')} className="relative overflow-hidden h-[110px] border-none p-0 cursor-pointer group">
-          <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=300&h=150&fit=crop&q=80" alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+          <img src="https://res.cloudinary.com/dynjqdxw8/image/upload/v1775899710/ele_est%C3%A1_me_enfrentando_chyogz.webp" alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-black/10" />
           <div className="absolute inset-0 p-3 flex flex-col justify-between">
             <div className="w-7 h-7 rounded-full bg-primary/30 flex items-center justify-center self-start">
@@ -510,7 +510,7 @@ const Home = ({ setPage, quizAnswers, onLogout }: { setPage: (p: PageId) => void
 
         {/* Mini-banner 6: Birra em público */}
         <Card onClick={() => setPage('crises')} className="relative overflow-hidden h-[110px] border-none p-0 cursor-pointer group">
-          <img src="https://images.unsplash.com/photo-1609220136736-443140c20efc?w=300&h=150&fit=crop&q=80" alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+          <img src="https://res.cloudinary.com/dynjqdxw8/image/upload/v1775899713/birra_em_p%C3%BAblico_1_cu5wjq.png" alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-black/10" />
           <div className="absolute inset-0 p-3 flex flex-col justify-between">
             <div className="w-7 h-7 rounded-full bg-purple-500/30 flex items-center justify-center self-start">
