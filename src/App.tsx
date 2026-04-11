@@ -389,17 +389,8 @@ const Home = ({ setPage, quizAnswers, onLogout }: { setPage: (p: PageId) => void
       </div>
 
       {/* 2. BANNER HERO PRINCIPAL */}
-      <Card onClick={() => setPage('crises')} className="relative overflow-hidden h-[180px] border-none p-0 cursor-pointer group">
+      <Card onClick={() => setPage('crises')} className="relative overflow-hidden h-[200px] border-none p-0 cursor-pointer group">
         <img src="https://res.cloudinary.com/dynjqdxw8/image/upload/v1775899715/seu_filho_faz_birra_-_Banner_1_1_wllwux.png" alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/5" />
-        <div className="absolute bottom-0 left-0 right-0 p-5">
-          <h2 className="text-xl font-bold text-white leading-tight">Seu filho faz birra e você não sabe o que fazer?</h2>
-          <p className="text-gray-300 text-sm mt-1.5">Saiba como agir com mais calma, firmeza e menos estresse.</p>
-          <div className="mt-3 inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur rounded-lg">
-            <span className="text-white text-sm font-medium">Ver situações</span>
-            <ChevronRight size={16} className="text-white" />
-          </div>
-        </div>
       </Card>
 
       {/* 3. TÍTULO: SITUAÇÕES MAIS COMUNS */}
@@ -413,73 +404,21 @@ const Home = ({ setPage, quizAnswers, onLogout }: { setPage: (p: PageId) => void
         {/* Mini-banner 1: Ele está gritando */}
         <Card onClick={() => setPage('crises')} className="relative overflow-hidden h-[120px] border-none p-0 cursor-pointer group">
           <img src="https://res.cloudinary.com/dynjqdxw8/image/upload/v1775899714/Ele_est%C3%A1_gritando_1_gy4czo.png" alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10" />
-          <div className="absolute inset-0 p-3 flex flex-col justify-between">
-            <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center self-start">
-              <Zap size={16} className="text-white" />
-            </div>
-            <div>
-              <h4 className="font-bold text-white text-sm leading-tight">Ele está gritando</h4>
-              <p className="text-gray-300 text-[10px] mt-0.5">Veja o que fazer</p>
-            </div>
-          </div>
-          <div className="absolute bottom-2 right-2 w-7 h-7 rounded-full bg-white/20 flex items-center justify-center">
-            <ChevronRight size={14} className="text-white" />
-          </div>
         </Card>
 
         {/* Mini-banner 2: Ele se jogou no chão */}
         <Card onClick={() => setPage('crises')} className="relative overflow-hidden h-[120px] border-none p-0 cursor-pointer group">
           <img src="https://res.cloudinary.com/dynjqdxw8/image/upload/v1775899711/Ele_se_joga_no_ch%C3%A3o_1_eiavjx.png" alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10" />
-          <div className="absolute inset-0 p-3 flex flex-col justify-between">
-            <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center self-start">
-              <Hand size={16} className="text-white" />
-            </div>
-            <div>
-              <h4 className="font-bold text-white text-sm leading-tight">Ele se jogou no chão</h4>
-              <p className="text-gray-300 text-[10px] mt-0.5">Como agir sem piorar</p>
-            </div>
-          </div>
-          <div className="absolute bottom-2 right-2 w-7 h-7 rounded-full bg-white/20 flex items-center justify-center">
-            <ChevronRight size={14} className="text-white" />
-          </div>
         </Card>
 
         {/* Mini-banner 3: Ele não aceita "não" */}
         <Card onClick={() => setPage('crises')} className="relative overflow-hidden h-[120px] border-none p-0 cursor-pointer group">
           <img src="https://res.cloudinary.com/dynjqdxw8/image/upload/v1775899709/Ele_n%C3%A3o_aceita_n%C3%A3o_evwvtu.webp" alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10" />
-          <div className="absolute inset-0 p-3 flex flex-col justify-between">
-            <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center self-start">
-              <AlertTriangle size={16} className="text-white" />
-            </div>
-            <div>
-              <h4 className="font-bold text-white text-sm leading-tight">Ele não aceita "não"</h4>
-              <p className="text-gray-300 text-[10px] mt-0.5">Mantenha o limite</p>
-            </div>
-          </div>
-          <div className="absolute bottom-2 right-2 w-7 h-7 rounded-full bg-white/20 flex items-center justify-center">
-            <ChevronRight size={14} className="text-white" />
-          </div>
         </Card>
 
         {/* Mini-banner 4: Quase perdendo o controle */}
-        <Card onClick={() => setPage('recover-control')} className="relative overflow-hidden h-[120px] border-orange-500/40 p-0 cursor-pointer group">
-          <img src="https://res.cloudinary.com/dynjqdxw8/image/upload/v1775899709/Ele_n%C3%A3o_aceita_n%C3%A3o_evwvtu.webp" alt="" className="absolute inset-0 w-full h-full object-cover opacity-70" />
-          <div className="absolute inset-0 bg-gradient-to-t from-orange-900/80 via-orange-900/40 to-orange-900/20" />
-          <div className="absolute inset-0 p-3 flex flex-col justify-between">
-            <div className="w-8 h-8 rounded-full bg-orange-500/40 flex items-center justify-center self-start">
-              <Heart size={16} className="text-white" />
-            </div>
-            <div>
-              <h4 className="font-bold text-white text-sm leading-tight">Quase perdendo o controle</h4>
-              <p className="text-orange-300 text-[10px] mt-0.5">Use antes de reagir</p>
-            </div>
-          </div>
-          <div className="absolute bottom-2 right-2 w-7 h-7 rounded-full bg-orange-500/40 flex items-center justify-center">
-            <ChevronRight size={14} className="text-white" />
-          </div>
+        <Card onClick={() => setPage('recover-control')} className="relative overflow-hidden h-[120px] border-none p-0 cursor-pointer group">
+          <img src="https://res.cloudinary.com/dynjqdxw8/image/upload/v1775899709/Ele_n%C3%A3o_aceita_n%C3%A3o_evwvtu.webp" alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
         </Card>
       </div>
 
@@ -490,40 +429,14 @@ const Home = ({ setPage, quizAnswers, onLogout }: { setPage: (p: PageId) => void
 
       {/* 6. GRID 2 COLUNAS — MINI-BANNERS SECUNDÁRIOS */}
       <div className="grid grid-cols-2 gap-3">
-        {/* Mini-banner 5: Ele está me enfrentamento */}
+        {/* Mini-banner 5: Ele está me enfrentando */}
         <Card onClick={() => setPage('crises')} className="relative overflow-hidden h-[110px] border-none p-0 cursor-pointer group">
           <img src="https://res.cloudinary.com/dynjqdxw8/image/upload/v1775899710/ele_est%C3%A1_me_enfrentando_chyogz.webp" alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-black/10" />
-          <div className="absolute inset-0 p-3 flex flex-col justify-between">
-            <div className="w-7 h-7 rounded-full bg-primary/30 flex items-center justify-center self-start">
-              <ShieldCheck size={14} className="text-primary" />
-            </div>
-            <div>
-              <h4 className="font-semibold text-white text-sm">Ele está me enfrentando</h4>
-              <p className="text-gray-400 text-[10px]">Responda com firmeza</p>
-            </div>
-          </div>
-          <div className="absolute bottom-2 right-2 w-6 h-6 rounded-full bg-white/15 flex items-center justify-center">
-            <ChevronRight size={12} className="text-primary" />
-          </div>
         </Card>
 
         {/* Mini-banner 6: Birra em público */}
         <Card onClick={() => setPage('crises')} className="relative overflow-hidden h-[110px] border-none p-0 cursor-pointer group">
           <img src="https://res.cloudinary.com/dynjqdxw8/image/upload/v1775899713/birra_em_p%C3%BAblico_1_cu5wjq.png" alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-black/10" />
-          <div className="absolute inset-0 p-3 flex flex-col justify-between">
-            <div className="w-7 h-7 rounded-full bg-purple-500/30 flex items-center justify-center self-start">
-              <Users size={14} className="text-purple-400" />
-            </div>
-            <div>
-              <h4 className="font-semibold text-white text-sm">Birra em público</h4>
-              <p className="text-gray-400 text-[10px]">Sem agir por vergonha</p>
-            </div>
-          </div>
-          <div className="absolute bottom-2 right-2 w-6 h-6 rounded-full bg-white/15 flex items-center justify-center">
-            <ChevronRight size={12} className="text-purple-400" />
-          </div>
         </Card>
       </div>
 
