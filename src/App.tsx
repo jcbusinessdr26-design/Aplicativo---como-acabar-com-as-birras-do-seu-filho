@@ -418,7 +418,7 @@ const Home = ({ setPage, quizAnswers, onLogout }: { setPage: (p: PageId) => void
 
         {/* Mini-banner 4: Quase perdendo o controle */}
         <Card onClick={() => setPage('recover-control')} className="relative overflow-hidden h-[120px] border-none p-0 cursor-pointer group">
-          <img src="https://res.cloudinary.com/dynjqdxw8/image/upload/v1775899709/Ele_n%C3%A3o_aceita_n%C3%A3o_evwvtu.webp" alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+          <img src="https://res.cloudinary.com/dynjqdxw8/image/upload/v1775902539/Estou_quase_perdendo_o_controle_1_rlxf0e.png" alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
         </Card>
       </div>
 
