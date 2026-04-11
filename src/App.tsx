@@ -778,40 +778,40 @@ export default function App() {
 
             {/* Texto do banner - fora da imagem */}
             <div className="px-1 -mt-2">
-              <h2 className="text-xl font-bold text-white leading-tight">{selectedCrisis.label}</h2>
-              <p className="text-white/80 text-sm mt-1">See o que fazer sem perder o controle.</p>
+              <h2 className="text-2xl font-bold text-white leading-tight">{selectedCrisis.label}</h2>
+              <p className="text-white/80 text-base mt-1">See o que fazer sem perder o controle.</p>
             </div>
 
             {/* Introdução */}
             <div className="px-1">
-              <h3 className="text-sm font-bold text-white mb-1">O que fazer nessa situação</h3>
-              <p className="text-xs text-white/70">Siga estes passos com calma e firmeza para não piorar a situação.</p>
+              <h3 className="text-base font-bold text-white mb-1">O que fazer nessa situação</h3>
+              <p className="text-sm text-white/70">Siga estes passos com calma e firmeza para não piorar a situação.</p>
             </div>
 
             {/* O que fazer agora - Verde */}
-            <Card className="p-4 bg-green-600/20 border-green-500/30">
-              <div className="flex items-center gap-2 mb-3">
-                <CheckCircle2 size={18} className="text-green-400" />
-                <h4 className="font-bold text-white">O que fazer agora</h4>
+            <Card className="p-5 bg-green-600/20 border-green-500/30">
+              <div className="flex items-center gap-3 mb-4">
+                <CheckCircle2 size={22} className="text-green-400" />
+                <h4 className="font-bold text-lg text-white">O que fazer agora</h4>
               </div>
-              <ol className="space-y-2">
+              <ol className="space-y-3">
                 {selectedCrisis.todo.map((t, i) => (
-                  <li key={i} className="text-sm text-white/90 flex gap-2">
-                    <span className="text-green-400 font-bold min-w-[20px]">{i + 1}.</span> {t}
+                  <li key={i} className="text-base text-white/90 flex gap-3">
+                    <span className="text-green-400 font-bold min-w-[24px]">{i + 1}.</span> {t}
                   </li>
                 ))}
               </ol>
             </Card>
 
             {/* O que evitar - Vinho/Ameixa */}
-            <Card className="p-4 bg-red-900/30 border-red-800/30">
-              <div className="flex items-center gap-2 mb-3">
-                <XCircle size={18} className="text-red-400" />
-                <h4 className="font-bold text-white">O que evitar</h4>
+            <Card className="p-5 bg-red-900/30 border-red-800/30">
+              <div className="flex items-center gap-3 mb-4">
+                <XCircle size={22} className="text-red-400" />
+                <h4 className="font-bold text-lg text-white">O que evitar</h4>
               </div>
-              <ul className="space-y-2">
+              <ul className="space-y-3">
                 {selectedCrisis.avoid.map((a, i) => (
-                  <li key={i} className="text-sm text-white/90 flex gap-2">
+                  <li key={i} className="text-base text-white/90 flex gap-3">
                     <span className="text-red-400">×</span> {a}
                   </li>
                 ))}
@@ -819,36 +819,36 @@ export default function App() {
             </Card>
 
             {/* O que dizer - Azul */}
-            <Card className="p-4 bg-blue-600/20 border-blue-500/30">
-              <div className="flex items-center gap-2 mb-3">
-                <Quote size={18} className="text-blue-400" />
-                <h4 className="font-bold text-white">O que dizer</h4>
+            <Card className="p-5 bg-blue-600/20 border-blue-500/30">
+              <div className="flex items-center gap-3 mb-4">
+                <Quote size={22} className="text-blue-400" />
+                <h4 className="font-bold text-lg text-white">O que dizer</h4>
               </div>
-              <p className="text-xs text-white/70 mb-3">Use frases curtas, firmes e sem excesso de explicação.</p>
-              <ul className="space-y-2">
+              <p className="text-sm text-white/70 mb-4">Use frases curtas, firmes e sem excesso de explicação.</p>
+              <ul className="space-y-3">
                 {selectedCrisis.phrase.split('. ').map((p, i) => (
-                  <li key={i} className="text-sm italic text-white/90">"{p.trim()}"</li>
+                  <li key={i} className="text-base italic text-white/90">"{p.trim()}"</li>
                 ))}
               </ul>
             </Card>
 
             {/* Como encerrar */}
-            <Card className="p-4 bg-card border-white/10">
-              <h4 className="font-bold text-white mb-2">Como encerrar sem piorar</h4>
-              <p className="text-sm text-white/80">{selectedCrisis.meaning}</p>
+            <Card className="p-5 bg-card border-white/10">
+              <h4 className="font-bold text-lg text-white mb-3">Como encerrar sem piorar</h4>
+              <p className="text-base text-white/80">{selectedCrisis.meaning}</p>
             </Card>
 
             {/* Botão Estou no limite */}
-            <Button onClick={() => setCurrentPage('recover-control')} className="w-full py-4 text-base font-semibold">
-              <AlertCircle size={20} /> Estou no limite
+            <Button onClick={() => setCurrentPage('recover-control')} className="w-full py-5 text-lg font-semibold">
+              <AlertCircle size={24} /> Estou no limite
             </Button>
 
             {/* Vídeos complementares */}
             {selectedCrisis.video && (
               <div className="space-y-3 pt-2">
                 <div className="px-1">
-                  <h3 className="text-sm font-bold text-white">Vídeos complementares</h3>
-                  <p className="text-xs text-white/60">Assista para entender melhor como aplicar isso na prática.</p>
+                  <h3 className="text-base font-bold text-white">Vídeos complementares</h3>
+                  <p className="text-sm text-white/60">Assista para entender melhor como aplicar isso na prática.</p>
                 </div>
                 <Card className="p-0 overflow-hidden">
                   <div className="relative h-[140px] bg-black/50">
