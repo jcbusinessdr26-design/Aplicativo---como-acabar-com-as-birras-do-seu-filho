@@ -375,7 +375,7 @@ const LoginError = ({ onRetry }: { onRetry: () => void }) => (
   </div>
 );
 
-const Home = ({ setPage, quizAnswers, onLogout }: { setPage: (p: PageId) => void, quizAnswers: QuizAnswers | null, onLogout: () => void }) => {
+const Home = ({ setPage, quizAnswers, onLogout, setSelectedCrisis }: { setPage: (p: PageId) => void, quizAnswers: QuizAnswers | null, onLogout: () => void, setSelectedCrisis: (c: any) => void }) => {
   const content = getPersonalizedContent(quizAnswers);
   
   return (
@@ -389,7 +389,7 @@ const Home = ({ setPage, quizAnswers, onLogout }: { setPage: (p: PageId) => void
       </div>
 
       {/* 2. BANNER HERO PRINCIPAL */}
-      <Card onClick={() => setPage('crises')} className="relative overflow-hidden h-[200px] border-none p-0 cursor-pointer group">
+      <Card onClick={() => { setSelectedCrisis(CRISIS_DATA.find(c => c.id === 'gritando') || null); setPage('crisis-detail'); }} className="relative overflow-hidden h-[200px] border-none p-0 cursor-pointer group">
         <img src="https://res.cloudinary.com/dynjqdxw8/image/upload/v1775899715/seu_filho_faz_birra_-_Banner_1_1_wllwux.png" alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
       </Card>
 
@@ -402,17 +402,17 @@ const Home = ({ setPage, quizAnswers, onLogout }: { setPage: (p: PageId) => void
       {/* 4. GRID 2 COLUNAS — MINI-BANNERS PRINCIPAIS */}
       <div className="grid grid-cols-2 gap-3">
         {/* Mini-banner 1: Ele está gritando */}
-        <Card onClick={() => setPage('crises')} className="relative overflow-hidden h-[120px] border-none p-0 cursor-pointer group">
+        <Card onClick={() => { setSelectedCrisis(CRISIS_DATA.find(c => c.id === 'gritando') || null); setPage('crisis-detail'); }} className="relative overflow-hidden h-[120px] border-none p-0 cursor-pointer group">
           <img src="https://res.cloudinary.com/dynjqdxw8/image/upload/v1775899714/Ele_est%C3%A1_gritando_1_gy4czo.png" alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
         </Card>
 
         {/* Mini-banner 2: Ele se jogou no chão */}
-        <Card onClick={() => setPage('crises')} className="relative overflow-hidden h-[120px] border-none p-0 cursor-pointer group">
+        <Card onClick={() => { setSelectedCrisis(CRISIS_DATA.find(c => c.id === 'chao') || null); setPage('crisis-detail'); }} className="relative overflow-hidden h-[120px] border-none p-0 cursor-pointer group">
           <img src="https://res.cloudinary.com/dynjqdxw8/image/upload/v1775899711/Ele_se_joga_no_ch%C3%A3o_1_eiavjx.png" alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
         </Card>
 
         {/* Mini-banner 3: Ele não aceita "não" */}
-        <Card onClick={() => setPage('crises')} className="relative overflow-hidden h-[120px] border-none p-0 cursor-pointer group">
+        <Card onClick={() => { setSelectedCrisis(CRISIS_DATA.find(c => c.id === 'nada-funciona') || null); setPage('crisis-detail'); }} className="relative overflow-hidden h-[120px] border-none p-0 cursor-pointer group">
           <img src="https://res.cloudinary.com/dynjqdxw8/image/upload/v1775899709/Ele_n%C3%A3o_aceita_n%C3%A3o_evwvtu.webp" alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
         </Card>
 
@@ -430,12 +430,12 @@ const Home = ({ setPage, quizAnswers, onLogout }: { setPage: (p: PageId) => void
       {/* 6. GRID 2 COLUNAS — MINI-BANNERS SECUNDÁRIOS */}
       <div className="grid grid-cols-2 gap-3">
         {/* Mini-banner 5: Ele está me enfrentando */}
-        <Card onClick={() => setPage('crises')} className="relative overflow-hidden h-[110px] border-none p-0 cursor-pointer group">
+        <Card onClick={() => { setSelectedCrisis(CRISIS_DATA.find(c => c.id === 'enfrentando') || null); setPage('crisis-detail'); }} className="relative overflow-hidden h-[110px] border-none p-0 cursor-pointer group">
           <img src="https://res.cloudinary.com/dynjqdxw8/image/upload/v1775899710/ele_est%C3%A1_me_enfrentando_chyogz.webp" alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
         </Card>
 
         {/* Mini-banner 6: Birra em público */}
-        <Card onClick={() => setPage('crises')} className="relative overflow-hidden h-[110px] border-none p-0 cursor-pointer group">
+        <Card onClick={() => { setSelectedCrisis(CRISIS_DATA.find(c => c.id === 'gritando') || null); setPage('crisis-detail'); }} className="relative overflow-hidden h-[110px] border-none p-0 cursor-pointer group">
           <img src="https://res.cloudinary.com/dynjqdxw8/image/upload/v1775899713/birra_em_p%C3%BAblico_1_cu5wjq.png" alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
         </Card>
       </div>
@@ -730,7 +730,7 @@ export default function App() {
         return <LoginError onRetry={() => setCurrentPage('login')} />;
       case 'home':
       case 'now':
-        return <Home setPage={setCurrentPage} quizAnswers={quizAnswers} onLogout={handleLogout} />;
+        return <Home setPage={setCurrentPage} quizAnswers={quizAnswers} onLogout={handleLogout} setSelectedCrisis={setSelectedCrisis} />;
       case 'quiz':
         return <Quiz onComplete={(answers) => { setQuizAnswers(answers); setCurrentPage('now'); }} />;
       case 'act-now':
@@ -757,14 +757,28 @@ export default function App() {
       case 'crisis-detail':
         return selectedCrisis && (
           <div className="space-y-5 pb-8">
-            {/* Banner limpo - apenas imagem */}
+            {/* Banner limpo - apenas imagem - baseado na crise */}
             <Card className="relative overflow-hidden h-[180px] border-none p-0">
-              <img src="https://res.cloudinary.com/dynjqdxw8/image/upload/v1775899714/Ele_est%C3%A1_gritando_1_gy4czo.png" alt="" className="absolute inset-0 w-full h-full object-cover" />
+              {selectedCrisis.id === 'gritando' && (
+                <img src="https://res.cloudinary.com/dynjqdxw8/image/upload/v1775899714/Ele_est%C3%A1_gritando_1_gy4czo.png" alt="" className="absolute inset-0 w-full h-full object-cover" />
+              )}
+              {selectedCrisis.id === 'chao' && (
+                <img src="https://res.cloudinary.com/dynjqdxw8/image/upload/v1775899711/Ele_se_joga_no_ch%C3%A3o_1_eiavjx.png" alt="" className="absolute inset-0 w-full h-full object-cover" />
+              )}
+              {selectedCrisis.id === 'enfrentando' && (
+                <img src="https://res.cloudinary.com/dynjqdxw8/image/upload/v1775899710/ele_est%C3%A1_me_enfrentando_chyogz.webp" alt="" className="absolute inset-0 w-full h-full object-cover" />
+              )}
+              {selectedCrisis.id === 'nada-funciona' && (
+                <img src="https://res.cloudinary.com/dynjqdxw8/image/upload/v1775899709/Ele_n%C3%A3o_aceita_n%C3%A3o_evwvtu.webp" alt="" className="absolute inset-0 w-full h-full object-cover" />
+              )}
+              {!['gritando', 'chao', 'enfrentando', 'nada-funciona'].includes(selectedCrisis.id) && (
+                <img src="https://res.cloudinary.com/dynjqdxw8/image/upload/v1775899715/seu_filho_faz_birra_-_Banner_1_1_wllwux.png" alt="" className="absolute inset-0 w-full h-full object-cover" />
+              )}
             </Card>
 
             {/* Texto do banner - fora da imagem */}
             <div className="px-1 -mt-2">
-              <h2 className="text-xl font-bold text-white leading-tight">Ele está gritando</h2>
+              <h2 className="text-xl font-bold text-white leading-tight">{selectedCrisis.label}</h2>
               <p className="text-white/80 text-sm mt-1">See o que fazer sem perder o controle.</p>
             </div>
 
@@ -1168,7 +1182,7 @@ export default function App() {
           </GenericPage>
         );
       default:
-        return <Home setPage={setCurrentPage} quizAnswers={quizAnswers} onLogout={handleLogout} />;
+        return <Home setPage={setCurrentPage} quizAnswers={quizAnswers} onLogout={handleLogout} setSelectedCrisis={setSelectedCrisis} />;
     }
   };
 
